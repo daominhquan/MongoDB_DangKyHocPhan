@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @Html.ActionLink("Add", "Add", "Account")
+    <div>
+
+        <h3>Accounts</h3>
+        <table border="1">
+            <tr>
+                <th>Username</th>
+                <th>Full Name</th>
+                <th>Status</th>
+                <th>Option</th>
+
+            </tr>
+            @foreach (var account in ViewBag.accounts)
+            {
+                <tr>
+                    <td>@account.Username</td>
+                    <td>@account.Fullname</td>
+                    <td>@account.Status</td>
+                    <td>
+                        <a href="@Url.Action("Edit","Account",
+                                new {  id  = account.Id})">
+                            Edit
+                        </a>
+                        | 
+                        <a href="@Url.Action("Delete","Account",
+                                new {  id  = account.Id})"
+                                onclick="return confirm('Are you sure?')"
+                           >
+                        Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

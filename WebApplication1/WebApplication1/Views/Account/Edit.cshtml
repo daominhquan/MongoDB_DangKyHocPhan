@@ -1,0 +1,53 @@
+﻿
+@model WebApplication1.Entities.Account
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <div> 
+        @using (Html.BeginForm("Edit", "Account", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td>@Html.TextBoxFor(a=>a.Username)</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>@Html.TextBoxFor(a=>a.Password)</td>
+                </tr>
+                <tr>
+                    <td>Fullname</td>
+                    <td>@Html.TextBoxFor(a=>a.Fullname)</td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>@Html.CheckBoxFor(a=>a.Status)</td>
+                </tr>
+                <tr>
+                    <td>Id</td>
+                    <td><input  name="AccountId" value="@ViewBag.id"/></td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="submit" value="Save" />
+                    </td>
+                </tr>
+
+            </table>
+        }
+
+    </div>
+</body>
+</html>
