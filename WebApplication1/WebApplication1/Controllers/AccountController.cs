@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,46 +11,57 @@ namespace WebApplication1.Controllers
 {
     public class AccountController : Controller
     {
-        private AccountModel accountModel = new AccountModel();
+        private AccountModel model = new AccountModel();
         // GET: Account
         public ActionResult Index()
         {
-            ViewBag.accounts = accountModel.findAll();
-            return View();
+            return View(model.findAll());
         }
         [HttpGet]
-        public ActionResult Add()
+        public ActionResult Create()
         {
-            return View("Add", new Account());
+            return View("Create", new Account());
         }
         [HttpPost]
-        public ActionResult Add(Account account)
+        public ActionResult Create(Account account)
         {
-            accountModel.create(account);
+            model.create(account);
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public ActionResult Delete(string id)
         {
-            accountModel.delete(id);
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else if (model.find(id) == null)
+            {
+                return RedirectToAction("Index");
+            }
+            model.delete(id);
             return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult Edit(string id)
         {
+            if(id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else if(model.find(id)==null)
+            {
+                return RedirectToAction("Index");
+            }
             ViewBag.id = id;
-            return View("Edit", accountModel.find(id));
+            return View("Edit", model.find(id));
         }
         [HttpPost]
-        public ActionResult Edit(Account account,String AccountId)
+        public ActionResult Edit(Account objectname, string id)
         {
-            var currentaccount = accountModel.find(AccountId);
-            currentaccount.Password = account.Password;
-            currentaccount.Fullname = account.Fullname;
-            currentaccount.Username = account.Username;
-
-            accountModel.update(currentaccount);
+            objectname.Id = ObjectId.Parse(id);
+            model.update(objectname);
             return RedirectToAction("Index");
         }
 

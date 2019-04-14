@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class=" ">Index</h2>
+
+@Html.ActionLink("Quản lý Account", "Index", "Account", new object { },new { @class = "btn btn-default" })
+@Html.ActionLink("Quản lý Học phần", "Index", "HocPhan", new object { },new { @class = "btn btn-default" })
+@Html.ActionLink("Quản lý Giảng viên", "Index", "GiangVien", new object { },new { @class = "btn btn-default" })
+
+

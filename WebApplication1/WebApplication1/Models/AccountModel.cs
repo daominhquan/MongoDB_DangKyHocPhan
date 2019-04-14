@@ -28,9 +28,12 @@ namespace WebApplication1.Models
         {
             var accountId = new ObjectId(id);
             return accountCollection.AsQueryable<Account>().SingleOrDefault(a => a.Id == accountId);
-
-
         }
+        public Account find_username(string username)
+        {
+            return accountCollection.AsQueryable<Account>().SingleOrDefault(a => a.Username == username);
+        }
+
         public void create(Account account)
         {
             accountCollection.InsertOne(account);

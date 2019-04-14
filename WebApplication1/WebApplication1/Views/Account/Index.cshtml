@@ -1,50 +1,54 @@
-﻿
+﻿@model IEnumerable<WebApplication1.Entities.Account>
+
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>Index</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    @Html.ActionLink("Add", "Add", "Account")
-    <div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
 
-        <h3>Accounts</h3>
-        <table border="1">
-            <tr>
-                <th>Username</th>
-                <th>Full Name</th>
-                <th>Status</th>
-                <th>Option</th>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete",
+                                   new { id = item.Id },
+                                   new { onclick = "return confirm('bạn có muốn xóa không?');" }) 
+            </td>
+        </tr>
+    }
 
-            </tr>
-            @foreach (var account in ViewBag.accounts)
-            {
-                <tr>
-                    <td>@account.Username</td>
-                    <td>@account.Fullname</td>
-                    <td>@account.Status</td>
-                    <td>
-                        <a href="@Url.Action("Edit","Account",
-                                new {  id  = account.Id})">
-                            Edit
-                        </a>
-                        | 
-                        <a href="@Url.Action("Delete","Account",
-                                new {  id  = account.Id})"
-                                onclick="return confirm('Are you sure?')"
-                           >
-                        Delete
-                        </a>
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
-</body>
-</html>
+</table>

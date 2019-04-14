@@ -1,0 +1,22 @@
+﻿@model WebApplication1.Entities.Account
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Index</h4>
+<hr />
+@if (string.IsNullOrEmpty(Session["currentAccount"] as string))
+{
+    <a href="@Url.Action("DangNhap","Home")" class="btn btn-primary">Đăng nhập</a>
+}
+else
+{
+    <h1>hello @Session["currentAccount"]</h1>
+    <a href="@Url.Action("DangXuat","Home")" onclick="return confirm('bạn muốn đăng xuất không?')" class="btn btn-primary">Đăng xuất</a>
+
+}
+
