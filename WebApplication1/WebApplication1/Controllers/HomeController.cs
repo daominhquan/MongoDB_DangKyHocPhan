@@ -31,7 +31,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult DangNhap(Account account)
         {
-            if(account.Username=="admin" && account.Password == "admin")
+            if (account.Username == "admin" && account.Password == "admin")
             {
                 return RedirectToAction("Index", "Admin");
             }
@@ -69,6 +69,8 @@ namespace WebApplication1.Controllers
             {
                 return View("Index");
             }
+
+            ViewBag.lophocs = new LopHocModel().findAll();
             return View();
         }
 
@@ -109,6 +111,20 @@ namespace WebApplication1.Controllers
         {
             Session[currentAccount] = null;
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult DangKyHocPhan()
+        {
+            if (Session[currentAccount] == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            MonHocModel monHoc = new MonHocModel();
+            ViewBag.listMonHoc = monHoc.findAll();
+            ViewBag.accountInfo = accountModel.find_username(Session[currentAccount].ToString());
+
+            return View();
         }
 
     }

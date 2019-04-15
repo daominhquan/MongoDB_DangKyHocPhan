@@ -232,6 +232,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery.fittext.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -271,6 +272,7 @@
     <Content Include="Views\MonHoc\ThemHocPhan.cshtml" />
     <Content Include="Views\MonHoc\XemDanhSachHocPhan.cshtml" />
     <Content Include="Views\MonHoc\EditHocPhan.cshtml" />
+    <Content Include="Views\Home\DangKyHocPhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

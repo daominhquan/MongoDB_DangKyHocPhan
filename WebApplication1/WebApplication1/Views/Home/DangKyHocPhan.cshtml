@@ -1,0 +1,311 @@
+﻿@using WebApplication1.Entities
+@using WebApplication1.Models
+@{
+    List<MonHoc> monHocs = ViewBag.listMonHoc;
+    LopHocModel lopHocModel = new LopHocModel();
+    GiangVienModel giangVienModel = new GiangVienModel();
+}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        body {
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            border-spacing: 15px;
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        th, td {
+            padding: 2px;
+            max-width: 47px;
+            min-width: 47px;
+            max-height: 50px;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        .thuchanh {
+            background-color: turquoise;
+        }
+
+        .thuchanh2 {
+            background-color: turquoise;
+            border-top: hidden;
+        }
+
+        .lythuyet {
+            background-color: violet;
+        }
+
+        .lythuyet2 {
+            background-color: violet;
+            border-top: hidden;
+        }
+
+        .xoa {
+            display: none;
+        }
+
+        td.w3-blue:hover {
+            background-color: #FFF842;
+            color: #403E10;
+            box-shadow: #00135f -1px 1px, #00135f -2px 2px, #00135f -3px 3px, #00135f -4px 4px, #00135f -5px 5px, #00135f -6px 6px;
+            transform: translate3d(6px, -6px, 0);
+            transition-delay: 0s;
+            transition-duration: 0.4s;
+            transition-property: all;
+            transition-timing-function: linear;
+        }
+
+        td.w3-green:hover {
+            background-color: #FFF842;
+            color: #403E10;
+            box-shadow: #002400 -1px 1px, #002400 -2px 2px, #002400 -3px 3px, #002400 -4px 4px, #002400 -5px 5px, #002400 -6px 6px;
+            transform: translate3d(6px, -6px, 0);
+            transition-delay: 0s;
+            transition-duration: 0.4s;
+            transition-property: all;
+            transition-timing-function: linear;
+        }
+
+        td.w3-yellow:hover {
+            background-color: #FFF842;
+            color: #403E10;
+            box-shadow: #232100 -1px 1px, #232100 -2px 2px, #232100 -3px 3px, #232100 -4px 4px, #232100 -5px 5px, #232100 -6px 6px;
+            transform: translate3d(6px, -6px, 0);
+            transition-delay: 0s;
+            transition-duration: 0.4s;
+            transition-property: all;
+            transition-timing-function: linear;
+        }
+
+        td.w3-red:hover {
+            background-color: #FFF842;
+            color: #403E10;
+            box-shadow: #2f0000 -1px 1px, #2f0000 -2px 2px, #2f0000 -3px 3px, #2f0000 -4px 4px, #2f0000 -5px 5px, #2f0000 -6px 6px;
+            transform: translate3d(6px, -6px, 0);
+            transition-delay: 0s;
+            transition-duration: 0.4s;
+            transition-property: all;
+            transition-timing-function: linear;
+        }
+
+        .thoigian {
+            display: inline-block;
+            font-size: 1.5em;
+            list-style-type: none;
+            padding: 1em;
+            text-transform: uppercase;
+        }
+
+        li span {
+            display: block;
+            font-size: 4.5rem;
+        }
+    </style>
+</head>
+
+<div class="w3-margin container body-content">
+    <div class="row">
+        <a onclick="lammoi()" class="c-btn "><i class="w3-large w3-spin fa fa-refresh"></i></a>
+        <table id="thoikhoabieu" style="max-width: 100%; max-height: 100%; font-size: 10px;font:100" class="thoikhoabieu">
+            <thead>
+                <tr>
+                    <th style="border-color:white"></th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 2</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 3</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 4</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 5</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 6</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 7</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">CHỦ NHẬT</th>
+                    <th style="border-color:white"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int tiet = 1; tiet <= 15; tiet++)
+                {
+
+                    <tr>
+                        <td class="w3-center" style="background-color: #6699CC;color:white;border-color:white">tiết @tiet</td>
+                        @for (int thu = 2; thu <= 8; thu++)
+                        {
+                            <td id="@(tiet.ToString() + thu.ToString())"></td>
+                        }
+                        <td class="w3-center" style="background-color: #6699CC;color:white;border-color:white">tiết @tiet</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th style="border-color:white"></th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 2</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 3</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 4</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 5</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 6</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">THỨ 7</th>
+                    <th style="background-color: #6699CC;color:white;border-color:white">CHỦ NHẬT</th>
+                    <th style="border-color:white"></th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="w3-margin">
+
+            <form>
+                <table style="max-width: 100%; max-height: 100%; font-size: 10px">
+                    <thead>
+                        <tr>
+                            <th style="background-color: #6699CC;color:white;border-color:white"></th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">Mã MH</th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">Tên môn học</th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">Mã lớp</th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">Sĩ số</th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">CL</th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">TH</th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">Thứ</th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">Tiết BD</th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">ST</th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">Phòng</th>
+                            <th style="background-color: #6699CC;color:white;border-color:white">Giảng viên</th>
+                        </tr>
+                    </thead>
+                </table>
+                @foreach (var item in monHocs)
+                {
+                    <fieldset style="padding:0px" id="@item.MaMonHoc" onclick="@("changeTKB"+item.MaMonHoc)()">
+                        @foreach (var hocphan in item.DanhSachHocPhan)
+                        {
+                            <table id="thoikhoabieu" style="max-width: 100%; max-height: 100%; font-size: 10px">
+                                <tbody onclick="$('#'+'@hocphan.Id.ToString()').prop('checked', true);" class="w3-hover-amber">
+                                    <tr>
+                                        <td rowspan="2">
+                                            <input type="radio"
+                                                   id='@hocphan.Id.ToString()'
+                                                   name="@item.MaMonHoc"
+                                                   value="@(hocphan.LyThuyet.Thu)/@(hocphan.ThucHanh.Thu)_@(hocphan.LyThuyet.TietBD)/@(hocphan.ThucHanh.TietBD)_@(giangVienModel.find(hocphan.LyThuyet.id_GiangVien).TenGiangVien)/@(giangVienModel.find(hocphan.ThucHanh.id_GiangVien).TenGiangVien)">
+                                        </td>
+                                        <td rowspan="2">@item.MaMonHoc</td>
+                                        <td rowspan="2">@item.TenMonHoc</td>
+                                        <td rowspan="2">@(lopHocModel.find(hocphan.id_LopHoc).MaLopHoc)</td>
+                                        <td rowspan="2">@hocphan.SiSo</td>
+                                        <td rowspan="2"></td>
+                                        <!--Lý thuyết-->
+                                        <td></td>
+                                        <td>@hocphan.LyThuyet.Thu</td>
+                                        <td>@hocphan.LyThuyet.TietBD</td>
+                                        <td>@hocphan.LyThuyet.SoTiet</td>
+                                        <td>@hocphan.LyThuyet.Phong</td>
+                                        <td>@(giangVienModel.find(hocphan.LyThuyet.id_GiangVien).TenGiangVien)</td>
+
+                                    </tr>
+                                    <tr>
+                                        <!--Thực hành-->
+                                        <td>*</td>
+                                        <td>@hocphan.ThucHanh.Thu</td>
+                                        <td>@hocphan.ThucHanh.TietBD</td>
+                                        <td>@hocphan.ThucHanh.SoTiet</td>
+                                        <td>@hocphan.ThucHanh.Phong</td>
+                                        <td>@(giangVienModel.find(hocphan.ThucHanh.id_GiangVien).TenGiangVien)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        }
+                    </fieldset>
+
+                }
+
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+@foreach (var item in monHocs)
+{
+    <input id="@("value"+item.MaMonHoc)" />
+    <script>
+    function @("changeTKB"+item.MaMonHoc)() {
+             @("lammoi"+item.MaMonHoc)();
+
+
+
+            var @("value"+item.MaMonHoc) = document.querySelector('input[name="@item.MaMonHoc"]:checked').value;
+
+            var @("thu"+item.MaMonHoc) =         @("value" + item.MaMonHoc).split("_")[0].toString();
+            var @("thuLT"+item.MaMonHoc) =       @("thu"+item.MaMonHoc).split("/")[0].toString();
+            var @("thuTH"+item.MaMonHoc) =       @("thu"+item.MaMonHoc).split("/")[1].toString();
+
+            var @("tiet" + item.MaMonHoc) =      @("value"+item.MaMonHoc).split("_")[1].toString();
+            var @("tietLT" + item.MaMonHoc ) =   @("tiet" +item.MaMonHoc).split("/")[0].toString();
+            var @("tietTH" + item.MaMonHoc ) =   @("tiet" +item.MaMonHoc).split("/")[1].toString();
+
+            var @("giangVien" + item.MaMonHoc) = @("value"    +item.MaMonHoc).split("_")[2].toString();
+            var @("giangVienLT"+item.MaMonHoc) = @("giangVien"+item.MaMonHoc).split("/")[0].toString();
+            var @("giangVienTH"+item.MaMonHoc) = @("giangVien"+item.MaMonHoc).split("/")[1].toString();
+
+
+        $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).addClass('w3-blue');
+        $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).addClass('@item.MaMonHoc');
+
+            $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 1) +@("thuLT"+item.MaMonHoc) ).addClass('w3-hide');
+            $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 2) +@("thuLT"+item.MaMonHoc) ).addClass('w3-hide');
+            $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).attr('rowspan', '3');
+            $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).html('@item.TenMonHoc.ToString() (LT)');
+
+
+        $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).addClass('w3-blue');
+        $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).addClass('@item.MaMonHoc');
+
+            $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 1) +@("thuTH"+item.MaMonHoc) ).addClass('w3-hide');
+            $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 2) +@("thuTH"+item.MaMonHoc) ).addClass('w3-hide');
+            $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).attr('rowspan', '3');
+            $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).html('@item.TenMonHoc.ToString() (TH)');
+
+            $('#@("value"+item.MaMonHoc)').val(@("value"+item.MaMonHoc));
+        }
+    </script>
+}
+@foreach (var item in monHocs)
+{
+    <script>
+        function @("lammoi"+item.MaMonHoc)() {
+            for (i = 1; i < 16; i++) {
+                for (f = 2; f < 9; f++) {
+                    if ($('#' + i.toString() + f.toString()).hasClass("@item.MaMonHoc")) {
+                        $('#' + i.toString() + f.toString()).removeClass('w3-hide');
+                        $('#' + (parseInt(i.toString()) + 1) + f.toString()).removeClass('w3-hide');
+                        $('#' + (parseInt(i.toString()) + 2) + f.toString()).removeClass('w3-hide');
+
+                        $('#' + i.toString() + f.toString()).removeClass('w3-hide');
+
+                        $('#' + i.toString() + f.toString()).removeClass('w3-blue');
+                        $('#' + i.toString() + f.toString()).removeClass('@item.MaMonHoc');
+                        $('#' + i.toString() + f.toString()).html('');
+                        $('#' + i.toString() + f.toString()).removeAttr('rowspan');
+                    }
+                }
+            }
+        }
+    </script>
+}
