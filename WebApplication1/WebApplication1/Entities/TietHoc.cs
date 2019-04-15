@@ -14,7 +14,7 @@ namespace WebApplication1.Entities
         public int TietBD { get; set; }
         public int SoTiet { get; set; }
         public string Phong { get; set; }
-        public string GiangVien { get; set; }
+        public string id_GiangVien { get; set; }
 
 
         //[BsonId]

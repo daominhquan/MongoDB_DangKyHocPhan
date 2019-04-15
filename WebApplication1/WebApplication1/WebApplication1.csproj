@@ -192,10 +192,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\MonHocController.cs" />
+    <Compile Include="Controllers\LopHocController.cs" />
     <Compile Include="Controllers\GiangVienController.cs" />
     <Compile Include="Controllers\HocPhanController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Entities\MonHoc.cs" />
+    <Compile Include="Entities\LopHoc.cs" />
     <Compile Include="Entities\GiangVien.cs" />
     <Compile Include="Entities\TietHoc.cs" />
     <Compile Include="Entities\HocPhan.cs" />
@@ -203,6 +207,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MonHocModel.cs" />
+    <Compile Include="Models\LopHocModel.cs" />
     <Compile Include="Models\GiangVienModel.cs" />
     <Compile Include="Models\HocPhanModel.cs" />
     <Compile Include="Models\AccountModel.cs" />
@@ -255,6 +261,16 @@
     <Content Include="Views\GiangVien\Create.cshtml" />
     <Content Include="Views\GiangVien\Edit.cshtml" />
     <Content Include="Views\HocPhan\Edit.cshtml" />
+    <Content Include="Views\LopHoc\Index.cshtml" />
+    <Content Include="Views\LopHoc\Create.cshtml" />
+    <Content Include="Views\LopHoc\Edit.cshtml" />
+    <Content Include="Views\MonHoc\Index.cshtml" />
+    <Content Include="Views\MonHoc\Create.cshtml" />
+    <Content Include="Views\MonHoc\Edit.cshtml" />
+    <Content Include="Views\Shared\backtoadminpage.cshtml" />
+    <Content Include="Views\MonHoc\ThemHocPhan.cshtml" />
+    <Content Include="Views\MonHoc\XemDanhSachHocPhan.cshtml" />
+    <Content Include="Views\MonHoc\EditHocPhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

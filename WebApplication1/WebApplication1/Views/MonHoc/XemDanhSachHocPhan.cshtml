@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebApplication1.Entities.HocPhan>
+
+@{
+    int position = 0;
+}
+<h1>@ViewBag.TenMonHoc</h1>
+<p>
+    @Html.ActionLink("Thêm học phần ", "ThemHocPhan", new { id = ViewBag.id_monhoc },new { @class="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>stt</th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_LopHoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiSo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@position</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_LopHoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SiSo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditHocPhan", new { Id_MonHoc = ViewBag.id_monhoc, position_hocphan = position }) |
+                @Html.ActionLink("Delete", "DeleteHocPhan", new { Id_MonHoc = ViewBag.id_monhoc, position_hocphan = position },
+               new { onclick = "return confirm('bạn có muốn xóa không?');" })
+            </td>
+        </tr>
+        position = position + 1;
+    }
+
+</table>
+<div>
+    <a href="@Url.Action("Index","MonHoc")" class="btn btn-default">< Trở về</a>
+</div>
+

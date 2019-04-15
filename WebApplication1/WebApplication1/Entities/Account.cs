@@ -18,25 +18,36 @@ namespace WebApplication1.Entities
             set;
         }
         [Required(ErrorMessage = "không thể để trống")]
-        [BsonElement("username")]
+        [BsonElement("Username")]
         [StringLength(20, MinimumLength = 4, ErrorMessage = "Tài khoản tối thiểu 4 ký tự")]
         public string Username
         {
             get; set;
         }
         [Required(ErrorMessage = "không thể để trống")]
-        [BsonElement("password")]
+        [BsonElement("Password")]
         [StringLength(20, MinimumLength = 4, ErrorMessage = "mật khẩu tối thiểu 4 ký tự")]
         public string Password
         {
             get; set;
         }
-        [BsonElement("fullname")]
+        [BsonElement("Fullname")]
         public string Fullname
         {
             get; set;
         }
-        [BsonElement("status")]
+        [BsonElement("id_LopHoc")]
+        public string id_LopHoc
+        {
+            get; set;
+        }
+
+        [BsonElement("HocPhanDaDangKy")]
+        public List<string> HocPhanDaDangKy
+        {
+            get; set;
+        }
+        [BsonElement("Status")]
         public bool Status
         {
             get; set;

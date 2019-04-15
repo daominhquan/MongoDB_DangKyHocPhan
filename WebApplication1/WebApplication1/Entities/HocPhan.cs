@@ -12,34 +12,20 @@ namespace WebApplication1.Entities
         [BsonId]
         public ObjectId Id { get; set; }
 
-        [BsonElement("maMH")]
-        public string MaMH { get; set; }
+        [BsonElement("id_LopHoc")]
+        public string id_LopHoc { get; set; }
 
-        [BsonElement("tenMonHoc")]
-        public string TenMonHoc { get; set; }
-
-        [BsonElement("maLop")]
-        public string MaLop { get; set; }
-
-        [BsonElement("siSo")]
+        [BsonElement("SiSo")]
         public int SiSo { get; set; }
 
-        [BsonElement("danhSachSinhVien")]
-        public List<Account> DanhSachSinhVien { get; set; }
-
-        [BsonElement("lyThuyet")]
+        [BsonElement("LyThuyet")]
         public TietHoc LyThuyet { get; set; }
 
-        [BsonElement("thucHanh")]
+        [BsonElement("ThucHanh")]
         public TietHoc ThucHanh { get; set; }
 
-        [BsonElement("status")]
+        [BsonElement("Status")]
         public bool Status { get; set; }
 
-        
-
     }
-
-
-
 }

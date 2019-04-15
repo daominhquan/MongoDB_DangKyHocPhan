@@ -46,9 +46,10 @@
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete",
                                    new { id = item.Id },
-                                   new { onclick = "return confirm('bạn có muốn xóa không?');" }) 
+                                   new { onclick = "return confirm('bạn có muốn xóa không?');" })
             </td>
         </tr>
     }
 
 </table>
+@Html.Partial("backtoadminpage")

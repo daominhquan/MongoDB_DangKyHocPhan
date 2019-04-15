@@ -3,11 +3,83 @@
     ViewBag.Title = "Index Admin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2 class=" ">Index</h2>
 
-@Html.ActionLink("Quản lý Account", "Index", "Account", new object { },new { @class = "btn btn-default" })
-@Html.ActionLink("Quản lý Học phần", "Index", "HocPhan", new object { },new { @class = "btn btn-default" })
-@Html.ActionLink("Quản lý Giảng viên", "Index", "GiangVien", new object { },new { @class = "btn btn-default" })
+@Html.ActionLink("Quản lý Account", "Index", "Account", new object { }, new { @class = "btn btn-default" })
+@Html.ActionLink("Quản lý Học phần", "Index", "HocPhan", new object { }, new { @class = "btn btn-default" })
+@Html.ActionLink("Quản lý Môn học", "Index", "MonHoc", new object { }, new { @class = "btn btn-default" })
 
+@Html.ActionLink("Quản lý Lớp học", "Index", "LopHoc", new object { }, new { @class = "btn btn-default" })
+@Html.ActionLink("Quản lý Giảng viên", "Index", "GiangVien", new object { }, new { @class = "btn btn-default" })
+<div class="w3-padding w3-margin w3-container">
+    <ul>
+        <li>
+            <span>MonHoc</span>
+            <ul>
+                <li class="w3-text-deep-orange">_id:</li>
+                <li>MaMonHoc</li>
+                <li>TenMonHoc</li>
+                <li>
+                    <span>DanhSachHocPhan</span>
+                    <ul>
+                        <li class="w3-text-deep-orange">_id:</li>
+                        <li>id_LopHoc</li>
+                        <li>SiSo</li>
+                        <li>
+                            <span>LyThuyet</span>
+                            <ul>
+                                <li>Thu</li>
+                                <li>TietBD</li>
+                                <li>SoTiet</li>
+                                <li>Phong</li>
+                                <li>id_GiangVien</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>ThucHanh</span>
+                            <ul>
+                                <li>Thu</li>
+                                <li>TietBD</li>
+                                <li>SoTiet</li>
+                                <li>Phong</li>
+                                <li>id_GiangVien</li>
+                            </ul>
+                        </li>
+                        <li>Status</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span>Account</span>
+            <ul>
+                <li class="w3-text-deep-orange">_id:</li>
+                <li>UserName</li>
+                <li>Password</li>
+                <li>FullName</li>
+                <li>id_LopHoc</li>
+                <li>
+                    <span>HocPhanDaDangKy</span>
+                    <ul>
+                        <li>id_HocPhan</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span>GiangVien</span>
+            <ul>
+                <li class="w3-text-deep-orange">_id:</li>
+                <li>TenGiangVien</li>
+            </ul>
+        </li>
+        <li>
+            <span>LopHoc</span>
+            <ul>
+                <li class="w3-text-deep-orange">_id:</li>
+                <li>TenLopHoc</li>
+            </ul>
+        </li>
 
+    </ul>
+</div>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication1.Entities.MonHoc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaMonHoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenMonHoc)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaMonHoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenMonHoc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Xem học phần ", "XemDanhSachHocPhan", new { id = item.Id }) |
+
+                @Html.ActionLink("Delete", "Delete",
+                                          new { id = item.Id },
+                                          new { onclick = "return confirm('bạn có muốn xóa không?');" })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.Partial("backtoadminpage")

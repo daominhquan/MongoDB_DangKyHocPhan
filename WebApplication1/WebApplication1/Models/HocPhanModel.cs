@@ -40,14 +40,12 @@ namespace WebApplication1.Models
             HocPhanCollection.UpdateOne(
                 Builders<HocPhan>.Filter.Eq("_id", ObjectId.Parse(HocPhan.Id.ToString())),
                 Builders<HocPhan>.Update
-                    .Set("maMH", HocPhan.MaMH)
-                    .Set("tenMonHoc", HocPhan.TenMonHoc)
-                    .Set("maLop", HocPhan.MaLop)
-                    .Set("siSo", HocPhan.SiSo)
-                    .Set("danhSachSinhVien", HocPhan.DanhSachSinhVien)
-                    .Set("lyThuyet", HocPhan.LyThuyet)
-                    .Set("thucHanh", HocPhan.ThucHanh)
-                    .Set("status", HocPhan.Status)
+                    .Set("id_LopHoc", HocPhan.id_LopHoc)
+                    .Set("SiSo", HocPhan.SiSo)
+                    .Set("LyThuyet", HocPhan.LyThuyet)
+                    .Set("ThucHanh", HocPhan.ThucHanh)
+                    .Set("Status", HocPhan.Status)
+
                 );
         }
         public void delete(String id)

@@ -13,13 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MaMH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenMonHoc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaLop)
+            @Html.DisplayNameFor(model => model.id_LopHoc)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SiSo)
@@ -34,13 +28,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MaMH)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenMonHoc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaLop)
+                @Html.DisplayFor(modelItem => item.id_LopHoc)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SiSo)
@@ -59,6 +47,4 @@
     }
 
 </table>
-<div>
-    <a href="@Url.Action("Index","Admin")" class="btn btn-default">< Back to Admin page</a>
-</div>
+@Html.Partial("backtoadminpage")

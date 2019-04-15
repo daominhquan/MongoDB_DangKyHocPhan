@@ -20,8 +20,9 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            
             ViewBag.giangviens = new GiangVienModel().findAll();
-
+            ViewBag.lophocs = new LopHocModel().findAll();
             return View("Create", new HocPhan());
         }
         [HttpPost]
@@ -57,7 +58,11 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Index");
             }
+            ViewBag.giangviens = new GiangVienModel().findAll();
+            ViewBag.lophocs = new LopHocModel().findAll();
+
             ViewBag.id = id;
+            HocPhan hocPhan = model.find(id);
             return View("Edit", model.find(id));
         }
         [HttpPost]
