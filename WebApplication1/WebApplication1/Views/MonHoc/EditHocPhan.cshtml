@@ -1,10 +1,14 @@
 ﻿@model WebApplication1.Entities.HocPhan
+
+
 @{
     ViewBag.Title = "Sửa Học Phần";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
+
 }
 
-<h2>Sửa học phần môn [@(ViewBag.TenMonHoc))]</h2>
+<h2>Sửa học phần môn <span class="badge w3-large">@(ViewBag.TenMonHoc))</span></h2>
 
 @using (Html.BeginForm())
 {
@@ -162,6 +166,6 @@
         </div>
     </div>
 }
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("< Trở về", "XemDanhSachHocPhan", new { id = ViewBag.id_monhoc }, new { @class = "btn btn-default" })
+    </div>

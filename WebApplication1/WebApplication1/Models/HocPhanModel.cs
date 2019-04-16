@@ -44,8 +44,8 @@ namespace WebApplication1.Models
                     .Set("SiSo", HocPhan.SiSo)
                     .Set("LyThuyet", HocPhan.LyThuyet)
                     .Set("ThucHanh", HocPhan.ThucHanh)
+                    .Set("DanhSachSinhVien", HocPhan.DanhSachSinhVien)
                     .Set("Status", HocPhan.Status)
-
                 );
         }
         public void delete(String id)

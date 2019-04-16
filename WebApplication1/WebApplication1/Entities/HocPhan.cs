@@ -24,6 +24,10 @@ namespace WebApplication1.Entities
         [BsonElement("ThucHanh")]
         public TietHoc ThucHanh { get; set; }
 
+        [BsonElement("DanhSachSinhVien")]
+        public List<string> DanhSachSinhVien { get; set; }
+        
+
         [BsonElement("Status")]
         public bool Status { get; set; }
 

@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm môn học", "Create", new { }, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -31,12 +31,12 @@
                 @Html.DisplayFor(modelItem => item.TenMonHoc)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Xem học phần ", "XemDanhSachHocPhan", new { id = item.Id }) |
 
-                @Html.ActionLink("Delete", "Delete",
-                                          new { id = item.Id },
-                                          new { onclick = "return confirm('bạn có muốn xóa không?');" })
+                @Html.ActionLink("Xem học phần ", "XemDanhSachHocPhan", new { id = item.Id }, new { @class = "badge w3-blue" }) 
+                @Html.ActionLink("Sửa", "Edit", new { id = item.Id }, new { @class = "badge w3-green" }) 
+                @Html.ActionLink("Xóa", "Delete",
+                               new { id = item.Id },
+                               new { onclick = "return confirm('bạn có muốn xóa không?');", @class = "badge w3-red" })
             </td>
         </tr>
     }

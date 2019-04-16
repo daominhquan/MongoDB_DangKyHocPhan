@@ -1,6 +1,8 @@
 ﻿@using WebApplication1.Entities
 @using WebApplication1.Models
 @{
+    /**/
+
     List<MonHoc> monHocs = ViewBag.listMonHoc;
     LopHocModel lopHocModel = new LopHocModel();
     GiangVienModel giangVienModel = new GiangVienModel();
@@ -10,6 +12,32 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        .filterDiv {
+            display: none;
+        }
+
+        .hahahahaha {
+            display: table;
+            width: 100%;
+            border: 1px solid gray;
+        }
+        /* Style the buttons */
+        .btn {
+            border: none;
+            outline: none;
+            padding: 12px 16px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        /*.btn:hover {
+                background-color: #ddd;
+            }
+
+            .btn.active {
+                background-color: #666;
+                color: white;
+            }*/
 
         body {
         }
@@ -36,27 +64,6 @@
             text-align: center;
         }
 
-        .thuchanh {
-            background-color: turquoise;
-        }
-
-        .thuchanh2 {
-            background-color: turquoise;
-            border-top: hidden;
-        }
-
-        .lythuyet {
-            background-color: violet;
-        }
-
-        .lythuyet2 {
-            background-color: violet;
-            border-top: hidden;
-        }
-
-        .xoa {
-            display: none;
-        }
 
         td.w3-blue:hover {
             background-color: #FFF842;
@@ -164,9 +171,17 @@
         </table>
 
         <div class="w3-margin">
+            <div id="myBtnContainer">
+                <button class="btn active  btn-default" onclick="filterSelection('all')">All</button>
+                @foreach (var item in monHocs)
+                {
+                    <button id="@("button"+item.MaMonHoc)" class="btn btn-default " onclick="filterSelection('@item.MaMonHoc')">@item.TenMonHoc</button>
+                }
+            </div>
+
 
             <form>
-                <table style="max-width: 100%; max-height: 100%; font-size: 10px">
+                <table style="max-width: 100%;width:100%; max-height: 100%; font-size: 10px">
                     <thead>
                         <tr>
                             <th style="background-color: #6699CC;color:white;border-color:white"></th>
@@ -186,17 +201,22 @@
                 </table>
                 @foreach (var item in monHocs)
                 {
-                    <fieldset style="padding:0px" id="@item.MaMonHoc" onclick="@("changeTKB"+item.MaMonHoc)()">
+                    <fieldset style="padding:0px" id="@("field"+item.MaMonHoc)" onclick="@("changeTKB"+item.MaMonHoc)()">
                         @foreach (var hocphan in item.DanhSachHocPhan)
                         {
-                            <table id="thoikhoabieu" style="max-width: 100%; max-height: 100%; font-size: 10px">
-                                <tbody onclick="$('#'+'@hocphan.Id.ToString()').prop('checked', true);" class="w3-hover-amber">
+                            <table id="thoikhoabieu" style="font-size: 10px;display:table">
+                                <tbody onclick="
+                                       $('#@hocphan.Id.ToString()').prop('checked', true);
+                                        $('#@("oldvalue"+item.MaMonHoc)').val($('#@("value"+item.MaMonHoc)').val());
+                                       $('#@("value"+item.MaMonHoc)').val('@hocphan.Id');
+                                       $('#@("button"+item.MaMonHoc)').addClass('w3-green')"
+                                       class="filterDiv @("filteritem"+item.MaMonHoc) hahahahaha w3-hover-amber">
                                     <tr>
                                         <td rowspan="2">
                                             <input type="radio"
                                                    id='@hocphan.Id.ToString()'
                                                    name="@item.MaMonHoc"
-                                                   value="@(hocphan.LyThuyet.Thu)/@(hocphan.ThucHanh.Thu)_@(hocphan.LyThuyet.TietBD)/@(hocphan.ThucHanh.TietBD)_@(giangVienModel.find(hocphan.LyThuyet.id_GiangVien).TenGiangVien)/@(giangVienModel.find(hocphan.ThucHanh.id_GiangVien).TenGiangVien)">
+                                                   value="@(hocphan.LyThuyet.Thu)/@(hocphan.ThucHanh.Thu)_@(hocphan.LyThuyet.TietBD)/@(hocphan.ThucHanh.TietBD)_@(giangVienModel.find(hocphan.LyThuyet.id_GiangVien).TenGiangVien)/@(giangVienModel.find(hocphan.ThucHanh.id_GiangVien).TenGiangVien)_@hocphan.Id">
                                         </td>
                                         <td rowspan="2">@item.MaMonHoc</td>
                                         <td rowspan="2">@item.TenMonHoc</td>
@@ -226,7 +246,6 @@
 
                         }
                     </fieldset>
-
                 }
 
             </form>
@@ -243,14 +262,49 @@
 
 @foreach (var item in monHocs)
 {
+<div class="w3-hide">
+
+
+    <label>@item.TenMonHoc:</label>
+    <br />
+    <input id="@("newvalue"+item.MaMonHoc)" />
+    <br />
+    <br />
+
+
+
+    <label>cũ @item.TenMonHoc:</label>
+    <br />
+    <input id="@("oldvalue"+item.MaMonHoc)" />
+    <br />
+    <br />
+
+</div>
+    
+
+
+
+
+    <label>@item.TenMonHoc:</label>
+    <br />
     <input id="@("value"+item.MaMonHoc)" />
+    <br />
+    <br />
+
     <script>
+
+
+
+
     function @("changeTKB"+item.MaMonHoc)() {
              @("lammoi"+item.MaMonHoc)();
+        
 
 
 
             var @("value"+item.MaMonHoc) = document.querySelector('input[name="@item.MaMonHoc"]:checked').value;
+
+
 
             var @("thu"+item.MaMonHoc) =         @("value" + item.MaMonHoc).split("_")[0].toString();
             var @("thuLT"+item.MaMonHoc) =       @("thu"+item.MaMonHoc).split("/")[0].toString();
@@ -264,25 +318,47 @@
             var @("giangVienLT"+item.MaMonHoc) = @("giangVien"+item.MaMonHoc).split("/")[0].toString();
             var @("giangVienTH"+item.MaMonHoc) = @("giangVien"+item.MaMonHoc).split("/")[1].toString();
 
+            var @("idHocPhan" + item.MaMonHoc) = @("value"    +item.MaMonHoc).split("_")[3].toString();
 
-        $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).addClass('w3-blue');
-        $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).addClass('@item.MaMonHoc');
+        if ($('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).hasClass('w3-blue') || $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).hasClass('w3-blue')) {
+            alert('trùng');
+            var oldvalue = $('#@("oldvalue"+item.MaMonHoc)').val();
+            
+
+            if ($('#@("oldvalue"+item.MaMonHoc)').val() == '') {
+                $('#@("button"+item.MaMonHoc)').removeClass('w3-green')
+                $('#' + $('#@("value"+item.MaMonHoc)').val()).prop('checked', false);
+
+            }
+
+            $('#@("value"+item.MaMonHoc)').val($('#@("oldvalue"+item.MaMonHoc)').val());
+
+            $('#' + $('#@("oldvalue"+item.MaMonHoc)').val()).prop('checked', true);
+
+        }
+        else {
+
+            $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).addClass('w3-blue');
+            $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).addClass('@item.MaMonHoc');
 
             $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 1) +@("thuLT"+item.MaMonHoc) ).addClass('w3-hide');
             $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 2) +@("thuLT"+item.MaMonHoc) ).addClass('w3-hide');
             $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).attr('rowspan', '3');
-            $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).html('@item.TenMonHoc.ToString() (LT)');
+            $('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).html('@item.TenMonHoc.ToString() (LT) '+@("giangVienLT"+item.MaMonHoc));
 
 
-        $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).addClass('w3-blue');
-        $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).addClass('@item.MaMonHoc');
+            $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).addClass('w3-blue');
+            $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).addClass('@item.MaMonHoc');
 
             $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 1) +@("thuTH"+item.MaMonHoc) ).addClass('w3-hide');
             $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 2) +@("thuTH"+item.MaMonHoc) ).addClass('w3-hide');
             $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).attr('rowspan', '3');
-            $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).html('@item.TenMonHoc.ToString() (TH)');
+            $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).html('@item.TenMonHoc.ToString() (TH) '+@("giangVienTH"+item.MaMonHoc));
 
-            $('#@("value"+item.MaMonHoc)').val(@("value"+item.MaMonHoc));
+        }
+
+
+
         }
     </script>
 }
@@ -309,3 +385,54 @@
         }
     </script>
 }
+
+
+
+
+
+
+
+<script>
+    filterSelection("all")
+    function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "hahahahaha");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "hahahahaha");
+        }
+    }
+
+    function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+        }
+    }
+
+    function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+            }
+        }
+        element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>

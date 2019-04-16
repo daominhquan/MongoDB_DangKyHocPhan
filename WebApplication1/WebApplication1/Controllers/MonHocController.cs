@@ -116,6 +116,7 @@ namespace WebApplication1.Controllers
             {
                 monHoc.DanhSachHocPhan = new List<HocPhan>();
             }
+            ViewBag.id_monhoc = id_monhoc;
             monHoc.DanhSachHocPhan.Add(objectname);
             objectname.Id = ObjectId.GenerateNewId();
             model.update(monHoc);
