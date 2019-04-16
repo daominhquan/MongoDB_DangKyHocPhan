@@ -3,6 +3,8 @@
 @{
     /**/
 
+    /**/
+
     List<MonHoc> monHocs = ViewBag.listMonHoc;
     LopHocModel lopHocModel = new LopHocModel();
     GiangVienModel giangVienModel = new GiangVienModel();
@@ -46,11 +48,13 @@
             border: 1px solid black;
             border-collapse: collapse;
             border-spacing: 15px;
+            
         }
 
         table {
             width: 100%;
-            table-layout: fixed;
+            table-layout: auto;
+            border-collapse:collapse;
         }
 
         th, td {
@@ -63,7 +67,9 @@
         th {
             text-align: center;
         }
-
+        td {
+            width: auto;
+        }
 
         td.w3-blue:hover {
             background-color: #FFF842;
@@ -255,41 +261,47 @@
 
 
 </div>
-
-
-
-
+<div class="form-horizontal">
+    @using (Html.BeginForm())
+    {
+        foreach (var item in monHocs)
+        {
+            <div class="form-group">
+                <label class="control-label col-md-4">@item.TenMonHoc:</label>
+                <input class="form-control col-md-6" name="DanhSachHocPhan" id="@("value" + item.MaMonHoc)" />
+                <a class="badge w3-red">Xóa</a>
+            </div>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <input type="submit" value="Lưu" class="btn w3-green" />
+            </div>
+        </div>
+    }
+</div>
 
 @foreach (var item in monHocs)
 {
-<div class="w3-hide">
+    <div class="w3-hide">
 
 
-    <label>@item.TenMonHoc:</label>
-    <br />
-    <input id="@("newvalue"+item.MaMonHoc)" />
-    <br />
-    <br />
-
-
-
-    <label>cũ @item.TenMonHoc:</label>
-    <br />
-    <input id="@("oldvalue"+item.MaMonHoc)" />
-    <br />
-    <br />
-
-</div>
-    
+        <label>@item.TenMonHoc:</label>
+        <br />
+        <input id="@("newvalue"+item.MaMonHoc)" />
+        <br />
+        <br />
 
 
 
+        <label>cũ @item.TenMonHoc:</label>
+        <br />
+        <input id="@("oldvalue"+item.MaMonHoc)" />
+        <br />
+        <br />
 
-    <label>@item.TenMonHoc:</label>
-    <br />
-    <input id="@("value"+item.MaMonHoc)" />
-    <br />
-    <br />
+    </div>
+
+
 
     <script>
 
@@ -298,7 +310,7 @@
 
     function @("changeTKB"+item.MaMonHoc)() {
              @("lammoi"+item.MaMonHoc)();
-        
+
 
 
 
@@ -324,17 +336,10 @@
             alert('trùng');
             var oldvalue = $('#@("oldvalue"+item.MaMonHoc)').val();
             
-
-            if ($('#@("oldvalue"+item.MaMonHoc)').val() == '') {
-                $('#@("button"+item.MaMonHoc)').removeClass('w3-green')
+                $('#@("button"+item.MaMonHoc)').removeClass('w3-green');
                 $('#' + $('#@("value"+item.MaMonHoc)').val()).prop('checked', false);
-
-            }
-
-            $('#@("value"+item.MaMonHoc)').val($('#@("oldvalue"+item.MaMonHoc)').val());
-
-            $('#' + $('#@("oldvalue"+item.MaMonHoc)').val()).prop('checked', true);
-
+                $('#@("oldvalue"+item.MaMonHoc)').val('');
+                $('#@("value"+item.MaMonHoc)').val('');
         }
         else {
 

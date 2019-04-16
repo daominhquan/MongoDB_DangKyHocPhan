@@ -126,6 +126,18 @@ namespace WebApplication1.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult DangKyHocPhan(List<string> DanhSachHocPhan,string id_user)
+        {
+            if (Session[currentAccount] == null)
+            {
+                return RedirectToAction("Index");
+            }
+            MonHocModel monHoc = new MonHocModel();
+            ViewBag.listMonHoc = monHoc.findAll();
+            ViewBag.accountInfo = accountModel.find_username(Session[currentAccount].ToString());
+            return View();
+        }
 
     }
 }
