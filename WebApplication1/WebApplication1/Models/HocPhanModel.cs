@@ -26,6 +26,10 @@ namespace WebApplication1.Models
         }
         public HocPhan find(string id)
         {
+            if(id== "" || id== null)
+            {
+                return null;
+            }
             var HocPhanId = new ObjectId(id);
             return HocPhanCollection.AsQueryable<HocPhan>().SingleOrDefault(a => a.Id == HocPhanId);
 

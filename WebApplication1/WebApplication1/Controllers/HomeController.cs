@@ -122,14 +122,19 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult DangKyHocPhan()
         {
-            if (Session[currentAccount] == null)
+            if (!isUserNameExist())
             {
                 return RedirectToAction("Index");
             }
 
             MonHocModel monHoc = new MonHocModel();
             ViewBag.listMonHoc = monHoc.findAll();
-            ViewBag.accountInfo = accountModel.find_username(Session[currentAccount].ToString());
+            Account account = accountModel.find_username(Session[currentAccount].ToString());
+            if (account.HocPhanDaDangKy != null)
+            {
+                return View(account.HocPhanDaDangKy);
+            }
+            
 
             return View();
         }
@@ -140,13 +145,13 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Index");
             }
-            foreach (string item in DanhSachHocPhan)
-            {
-                if (item == null)
-                {
-                    DanhSachHocPhan.Remove(item);
-                }
-            }
+            //foreach (string item in DanhSachHocPhan)
+            //{
+            //    if (item == null)
+            //    {
+            //        DanhSachHocPhan.Remove(item);
+            //    }
+            //}
 
             MonHocModel monHoc = new MonHocModel();
             HocPhanModel hocPhanModel = new HocPhanModel();
@@ -163,10 +168,14 @@ namespace WebApplication1.Controllers
             ViewBag.accountInfo = accountModel.find_username(Session[currentAccount].ToString());
 
             TempData["script"] = "toastr.success('Đăng ký học phần thành công!', 'Thành công')";
-            return View("Index");
+            return View(DanhSachHocPhan);
         }
         public bool isUserNameExist()
         {
+            if (Session[currentAccount] == null)
+            {
+                return false;
+            }
             AccountModel accountModel = new AccountModel();
             foreach (var item in accountModel.findAll())
             {

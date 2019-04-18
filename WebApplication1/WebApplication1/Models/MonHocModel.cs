@@ -29,6 +29,22 @@ namespace WebApplication1.Models
             var MonHocId = new ObjectId(id);
             return MonHocCollection.AsQueryable<MonHoc>().SingleOrDefault(a => a.Id == MonHocId);
         }
+
+        public bool isHocPhanThuocMonHoc(string idMonHoc ,string idHocPhan)
+        {
+            MonHocModel monHocModel = new MonHocModel();
+            HocPhanModel hocPhanModel = new HocPhanModel();
+            MonHoc monHoc = monHocModel.find(idMonHoc);
+            foreach(HocPhan item in monHoc.DanhSachHocPhan)
+            {
+                if(item.Id.ToString() == idHocPhan)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void create(MonHoc MonHoc)
         {
             MonHocCollection.InsertOne(MonHoc);

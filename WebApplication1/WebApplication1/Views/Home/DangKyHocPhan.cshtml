@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Entities.Account
+﻿@model List<string>
 @using WebApplication1.Entities
 @using WebApplication1.Models
 @{
@@ -9,6 +9,11 @@
     List<MonHoc> monHocs = ViewBag.listMonHoc;
     LopHocModel lopHocModel = new LopHocModel();
     GiangVienModel giangVienModel = new GiangVienModel();
+    HocPhanModel hocPhanModel = new HocPhanModel();
+    MonHocModel monHocModel = new MonHocModel();
+
+    string tenMonHoc = "";
+    string maMonHoc = "";
 }
 
 <head>
@@ -210,7 +215,7 @@
                 </table>
                 @foreach (var item in monHocs)
                 {
-                    <fieldset style="padding:0px" id="@("field"+item.MaMonHoc)" onclick="@("changeTKB"+item.MaMonHoc)()">
+                    <fieldset style="padding:0px" id="@("field"+item.MaMonHoc)" onclick="@("changeTKB"+item.MaMonHoc)()" onchange="@("changeTKB"+item.MaMonHoc)()">
                         @foreach (var hocphan in item.DanhSachHocPhan)
                         {
                             <table id="thoikhoabieu" style="font-size: 10px;display:table">
@@ -269,11 +274,20 @@
     {
         foreach (var item in monHocs)
         {
+            string valueInput = "";
+            foreach (string itemHocPhanDaDangKy in Model)
+            {
+                if (monHocModel.isHocPhanThuocMonHoc(item.Id.ToString(), itemHocPhanDaDangKy))
+                {
+                    valueInput = itemHocPhanDaDangKy;
+                }
+            }
             <div class="form-group">
                 <label class="control-label col-md-4">@item.TenMonHoc:</label>
-                <input class="form-control col-md-6" name="DanhSachHocPhan" id="@("value" + item.MaMonHoc)" />
-                <a class="badge w3-red">Xóa</a>
+                <input class="form-control col-md-6 w3-disabled" value="@valueInput" name="DanhSachHocPhan" id="@("value" + item.MaMonHoc)" />
+                <a onclick="@("xoaHocPhan" + item.MaMonHoc)()" class="badge w3-red">Xóa</a>
             </div>
+
         }
         <div class="form-group">
             <div class="col-md-offset-4 col-md-8">
@@ -286,14 +300,6 @@
 @foreach (var item in monHocs)
 {
     <div class="w3-hide">
-
-
-        <label>@item.TenMonHoc:</label>
-        <br />
-        <input id="@("newvalue"+item.MaMonHoc)" />
-        <br />
-        <br />
-
 
 
         <label>cũ @item.TenMonHoc:</label>
@@ -348,7 +354,7 @@
                 @("changeTKB"+item.MaMonHoc)();
                 $('#@("button"+item.MaMonHoc)').addClass('w3-green');
             }
-            
+
         }
         else {
 
@@ -368,12 +374,12 @@
             $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 2) +@("thuTH"+item.MaMonHoc) ).addClass('w3-hide');
             $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).attr('rowspan', '3');
             $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).html('@item.TenMonHoc.ToString() (TH) ' +@("giangVienTH"+item.MaMonHoc));
-            
+
         }
 
         if ($('#@("value"+item.MaMonHoc)').val() != $('#@("oldvalue"+item.MaMonHoc)').val())
 
-            toastr.success('chọn @item.TenMonHoc thành công! ');
+            toastr.success('chọn thành công ','@item.TenMonHoc');
         }
     </script>
 }
@@ -398,6 +404,17 @@
                 }
             }
         }
+        function @("xoaHocPhan"+item.MaMonHoc)() {
+            @("lammoi"+item.MaMonHoc)();
+            $('#' + $('#@("value"+item.MaMonHoc)').val()).prop('checked', false);
+            $('#@("value" + item.MaMonHoc)').val('');
+            $('#@("button"+item.MaMonHoc)').removeClass('w3-green');
+            toastr.info('xóa thành công','@item.TenMonHoc');
+        }
+
+
+
+
     </script>
 }
 
@@ -470,7 +487,8 @@
                 "hideEasing": "linear",
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
-            }
+            };
+
         @Html.Raw(TempData["script"]);
         })
     </script>
@@ -485,3 +503,22 @@
 
 }
 @Html.Raw(TempData["html"])
+
+    
+@foreach (var itemSetUpMonHoc in monHocs)
+{
+    string valueInput = "";
+    foreach (string itemHocPhanDaDangKy in Model)
+    {
+        if (monHocModel.isHocPhanThuocMonHoc(itemSetUpMonHoc.Id.ToString(), itemHocPhanDaDangKy))
+        {
+            valueInput = itemHocPhanDaDangKy;
+        }
+
+        <script>
+            $('#@valueInput').prop('checked', true);
+        </script>
+            
+    }
+}
+    
