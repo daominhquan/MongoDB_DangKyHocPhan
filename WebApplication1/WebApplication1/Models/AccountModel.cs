@@ -43,10 +43,15 @@ namespace WebApplication1.Models
             accountCollection.UpdateOne(
                 Builders<Account>.Filter.Eq("_id", ObjectId.Parse(account.Id.ToString())),
                 Builders<Account>.Update
-                    .Set("username", account.Username)
-                    .Set("password", account.Password)
-                    .Set("fullname", account.Fullname)
-                    .Set("status", account.Status)
+                    .Set("Username", account.Username)
+                    .Set("Password", account.Password)
+                    .Set("Fullname", account.Fullname)
+                    .Set("Status", account.Status)
+                    .Set("id_LopHoc", account.id_LopHoc)
+                    .Set("HocPhanDaDangKy", account.HocPhanDaDangKy)
+
+
+
                 );
         }
         public void delete(String id)

@@ -1,4 +1,5 @@
-﻿@using WebApplication1.Entities
+﻿@model WebApplication1.Entities.Account
+@using WebApplication1.Entities
 @using WebApplication1.Models
 @{
     /**/
@@ -9,7 +10,9 @@
     LopHocModel lopHocModel = new LopHocModel();
     GiangVienModel giangVienModel = new GiangVienModel();
 }
+
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,13 +51,12 @@
             border: 1px solid black;
             border-collapse: collapse;
             border-spacing: 15px;
-            
         }
 
         table {
             width: 100%;
             table-layout: auto;
-            border-collapse:collapse;
+            border-collapse: collapse;
         }
 
         th, td {
@@ -67,53 +69,54 @@
         th {
             text-align: center;
         }
+
         td {
             width: auto;
         }
 
-        td.w3-blue:hover {
-            background-color: #FFF842;
-            color: #403E10;
-            box-shadow: #00135f -1px 1px, #00135f -2px 2px, #00135f -3px 3px, #00135f -4px 4px, #00135f -5px 5px, #00135f -6px 6px;
-            transform: translate3d(6px, -6px, 0);
-            transition-delay: 0s;
-            transition-duration: 0.4s;
-            transition-property: all;
-            transition-timing-function: linear;
-        }
+            td.w3-blue:hover {
+                background-color: #FFF842;
+                color: #403E10;
+                box-shadow: #00135f -1px 1px, #00135f -2px 2px, #00135f -3px 3px, #00135f -4px 4px, #00135f -5px 5px, #00135f -6px 6px;
+                transform: translate3d(6px, -6px, 0);
+                transition-delay: 0s;
+                transition-duration: 0.4s;
+                transition-property: all;
+                transition-timing-function: linear;
+            }
 
-        td.w3-green:hover {
-            background-color: #FFF842;
-            color: #403E10;
-            box-shadow: #002400 -1px 1px, #002400 -2px 2px, #002400 -3px 3px, #002400 -4px 4px, #002400 -5px 5px, #002400 -6px 6px;
-            transform: translate3d(6px, -6px, 0);
-            transition-delay: 0s;
-            transition-duration: 0.4s;
-            transition-property: all;
-            transition-timing-function: linear;
-        }
+            td.w3-green:hover {
+                background-color: #FFF842;
+                color: #403E10;
+                box-shadow: #002400 -1px 1px, #002400 -2px 2px, #002400 -3px 3px, #002400 -4px 4px, #002400 -5px 5px, #002400 -6px 6px;
+                transform: translate3d(6px, -6px, 0);
+                transition-delay: 0s;
+                transition-duration: 0.4s;
+                transition-property: all;
+                transition-timing-function: linear;
+            }
 
-        td.w3-yellow:hover {
-            background-color: #FFF842;
-            color: #403E10;
-            box-shadow: #232100 -1px 1px, #232100 -2px 2px, #232100 -3px 3px, #232100 -4px 4px, #232100 -5px 5px, #232100 -6px 6px;
-            transform: translate3d(6px, -6px, 0);
-            transition-delay: 0s;
-            transition-duration: 0.4s;
-            transition-property: all;
-            transition-timing-function: linear;
-        }
+            td.w3-yellow:hover {
+                background-color: #FFF842;
+                color: #403E10;
+                box-shadow: #232100 -1px 1px, #232100 -2px 2px, #232100 -3px 3px, #232100 -4px 4px, #232100 -5px 5px, #232100 -6px 6px;
+                transform: translate3d(6px, -6px, 0);
+                transition-delay: 0s;
+                transition-duration: 0.4s;
+                transition-property: all;
+                transition-timing-function: linear;
+            }
 
-        td.w3-red:hover {
-            background-color: #FFF842;
-            color: #403E10;
-            box-shadow: #2f0000 -1px 1px, #2f0000 -2px 2px, #2f0000 -3px 3px, #2f0000 -4px 4px, #2f0000 -5px 5px, #2f0000 -6px 6px;
-            transform: translate3d(6px, -6px, 0);
-            transition-delay: 0s;
-            transition-duration: 0.4s;
-            transition-property: all;
-            transition-timing-function: linear;
-        }
+            td.w3-red:hover {
+                background-color: #FFF842;
+                color: #403E10;
+                box-shadow: #2f0000 -1px 1px, #2f0000 -2px 2px, #2f0000 -3px 3px, #2f0000 -4px 4px, #2f0000 -5px 5px, #2f0000 -6px 6px;
+                transform: translate3d(6px, -6px, 0);
+                transition-delay: 0s;
+                transition-duration: 0.4s;
+                transition-property: all;
+                transition-timing-function: linear;
+            }
 
         .thoigian {
             display: inline-block;
@@ -309,37 +312,43 @@
 
 
     function @("changeTKB"+item.MaMonHoc)() {
-             @("lammoi"+item.MaMonHoc)();
+         @("lammoi"+item.MaMonHoc)();
 
 
 
 
-            var @("value"+item.MaMonHoc) = document.querySelector('input[name="@item.MaMonHoc"]:checked').value;
+        var @("value"+item.MaMonHoc) = document.querySelector('input[name="@item.MaMonHoc"]:checked').value;
 
 
 
-            var @("thu"+item.MaMonHoc) =         @("value" + item.MaMonHoc).split("_")[0].toString();
-            var @("thuLT"+item.MaMonHoc) =       @("thu"+item.MaMonHoc).split("/")[0].toString();
-            var @("thuTH"+item.MaMonHoc) =       @("thu"+item.MaMonHoc).split("/")[1].toString();
+        var @("thu"+item.MaMonHoc) =         @("value" + item.MaMonHoc).split("_")[0].toString();
+        var @("thuLT"+item.MaMonHoc) =       @("thu"+item.MaMonHoc).split("/")[0].toString();
+        var @("thuTH"+item.MaMonHoc) =       @("thu"+item.MaMonHoc).split("/")[1].toString();
 
-            var @("tiet" + item.MaMonHoc) =      @("value"+item.MaMonHoc).split("_")[1].toString();
-            var @("tietLT" + item.MaMonHoc ) =   @("tiet" +item.MaMonHoc).split("/")[0].toString();
-            var @("tietTH" + item.MaMonHoc ) =   @("tiet" +item.MaMonHoc).split("/")[1].toString();
+        var @("tiet" + item.MaMonHoc) =      @("value"+item.MaMonHoc).split("_")[1].toString();
+        var @("tietLT" + item.MaMonHoc ) =   @("tiet" +item.MaMonHoc).split("/")[0].toString();
+        var @("tietTH" + item.MaMonHoc ) =   @("tiet" +item.MaMonHoc).split("/")[1].toString();
 
-            var @("giangVien" + item.MaMonHoc) = @("value"    +item.MaMonHoc).split("_")[2].toString();
-            var @("giangVienLT"+item.MaMonHoc) = @("giangVien"+item.MaMonHoc).split("/")[0].toString();
-            var @("giangVienTH"+item.MaMonHoc) = @("giangVien"+item.MaMonHoc).split("/")[1].toString();
+        var @("giangVien" + item.MaMonHoc) = @("value"    +item.MaMonHoc).split("_")[2].toString();
+        var @("giangVienLT"+item.MaMonHoc) = @("giangVien"+item.MaMonHoc).split("/")[0].toString();
+        var @("giangVienTH"+item.MaMonHoc) = @("giangVien"+item.MaMonHoc).split("/")[1].toString();
 
-            var @("idHocPhan" + item.MaMonHoc) = @("value"    +item.MaMonHoc).split("_")[3].toString();
+        var @("idHocPhan" + item.MaMonHoc) = @("value"    +item.MaMonHoc).split("_")[3].toString();
 
         if ($('#' + (parseInt(@("tietLT" + item.MaMonHoc )) + 0) +@("thuLT"+item.MaMonHoc) ).hasClass('w3-blue') || $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).hasClass('w3-blue')) {
-            alert('trùng');
+            toastr.warning('trùng tiết học')
             var oldvalue = $('#@("oldvalue"+item.MaMonHoc)').val();
+            $('#@("button"+item.MaMonHoc)').removeClass('w3-green');
+            $('#' + $('#@("value"+item.MaMonHoc)').val()).prop('checked', false);
+            $('#' + $('#@("oldvalue"+item.MaMonHoc)').val()).prop('checked', true);
+
+            //$('#@("oldvalue"+item.MaMonHoc)').val('');
+            $('#@("value"+item.MaMonHoc)').val($('#@("oldvalue"+item.MaMonHoc)').val());
+            if ($('#@("value"+item.MaMonHoc)').val() != "") {
+                @("changeTKB"+item.MaMonHoc)();
+                $('#@("button"+item.MaMonHoc)').addClass('w3-green');
+            }
             
-                $('#@("button"+item.MaMonHoc)').removeClass('w3-green');
-                $('#' + $('#@("value"+item.MaMonHoc)').val()).prop('checked', false);
-                $('#@("oldvalue"+item.MaMonHoc)').val('');
-                $('#@("value"+item.MaMonHoc)').val('');
         }
         else {
 
@@ -358,12 +367,13 @@
             $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 1) +@("thuTH"+item.MaMonHoc) ).addClass('w3-hide');
             $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 2) +@("thuTH"+item.MaMonHoc) ).addClass('w3-hide');
             $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).attr('rowspan', '3');
-            $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).html('@item.TenMonHoc.ToString() (TH) '+@("giangVienTH"+item.MaMonHoc));
-
+            $('#' + (parseInt(@("tietTH" + item.MaMonHoc )) + 0) +@("thuTH"+item.MaMonHoc) ).html('@item.TenMonHoc.ToString() (TH) ' +@("giangVienTH"+item.MaMonHoc));
+            
         }
 
+        if ($('#@("value"+item.MaMonHoc)').val() != $('#@("oldvalue"+item.MaMonHoc)').val())
 
-
+            toastr.success('chọn @item.TenMonHoc thành công! ');
         }
     </script>
 }
@@ -398,7 +408,7 @@
 
 
 <script>
-    filterSelection("all")
+    filterSelection("all");
     function filterSelection(c) {
         var x, i;
         x = document.getElementsByClassName("filterDiv");
@@ -441,3 +451,37 @@
         });
     }
 </script>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "200",
+                "hideDuration": "500",
+                "timeOut": "2500",
+                "extendedTimeOut": "500",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        @Html.Raw(TempData["script"]);
+        })
+    </script>
+
+
+
+    <script src="~/Scripts/toastr.js"></script>
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+
+}
+@Html.Raw(TempData["html"])

@@ -77,11 +77,18 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult DangKy(Account account, string retypePassword)
         {
+            ViewBag.lophocs = new LopHocModel().findAll();
             if (account.Fullname == null)
             {
                 ModelState.AddModelError("Fullname", "không được để trống");
                 return View();
             }
+            if (account.id_LopHoc == null)
+            {
+                ModelState.AddModelError("id_LopHoc", "không được để trống");
+                return View();
+            }
+
             if (ModelState.IsValid)
             {
                 if (accountModel.find_username(account.Username) != null)
@@ -127,17 +134,48 @@ namespace WebApplication1.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult DangKyHocPhan(List<string> DanhSachHocPhan,string id_user)
+        public ActionResult DangKyHocPhan(List<string> DanhSachHocPhan)
         {
-            if (Session[currentAccount] == null)
+            if (!isUserNameExist())
             {
                 return RedirectToAction("Index");
             }
+            foreach (string item in DanhSachHocPhan)
+            {
+                if (item == null)
+                {
+                    DanhSachHocPhan.Remove(item);
+                }
+            }
+
             MonHocModel monHoc = new MonHocModel();
+            HocPhanModel hocPhanModel = new HocPhanModel();
+            AccountModel accountModel = new AccountModel();
+            Account account = new AccountModel().find_username(Session[currentAccount].ToString());
+            List<string> newHocPhanDaDangKy = DanhSachHocPhan;
+            account.HocPhanDaDangKy = newHocPhanDaDangKy;
+            if (account != null)
+            {
+                accountModel.update(account);
+            }
+
             ViewBag.listMonHoc = monHoc.findAll();
             ViewBag.accountInfo = accountModel.find_username(Session[currentAccount].ToString());
-            return View();
-        }
 
+            TempData["script"] = "toastr.success('Đăng ký học phần thành công!', 'Thành công')";
+            return View("Index");
+        }
+        public bool isUserNameExist()
+        {
+            AccountModel accountModel = new AccountModel();
+            foreach (var item in accountModel.findAll())
+            {
+                if (Session[currentAccount].ToString() == item.Username)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -21,3 +21,37 @@ else
 
 }
 
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-bottom-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "200",
+                "hideDuration": "500",
+                "timeOut": "2500",
+                "extendedTimeOut": "500",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        @Html.Raw(TempData["script"]);
+        })
+    </script>
+
+
+
+    <script src="~/Scripts/toastr.js"></script>
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+
+}
+@Html.Raw(TempData["html"])

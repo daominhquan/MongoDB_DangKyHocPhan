@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Quản lý sinh viên</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -43,7 +43,7 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
                 @Html.ActionLink("Delete", "Delete",
                                    new { id = item.Id },
                                    new { onclick = "return confirm('bạn có muốn xóa không?');" })
