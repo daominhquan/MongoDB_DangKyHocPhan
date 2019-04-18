@@ -64,5 +64,23 @@ namespace WebApplication1.Models
         {
             MonHocCollection.DeleteOne(Builders<MonHoc>.Filter.Eq("_id", ObjectId.Parse(id)));
         }
+
+        public int ConLai(string idHocPhan,int SiSo)
+        {
+            AccountModel accountModel = new AccountModel();
+            int conLai = SiSo;
+            foreach(var item in accountModel.findAll())
+            {
+                foreach(var itemHocPhanDaDangKy in item.HocPhanDaDangKy)
+                {
+                    if (itemHocPhanDaDangKy == idHocPhan)
+                    {
+                        conLai = conLai -1;
+                    }
+                }
+            }
+
+            return conLai;
+        }
     }
 }

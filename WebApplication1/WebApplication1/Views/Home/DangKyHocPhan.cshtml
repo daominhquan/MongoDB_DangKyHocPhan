@@ -233,7 +233,7 @@
                                         <td rowspan="2">@item.TenMonHoc</td>
                                         <td rowspan="2">@(lopHocModel.find(hocphan.id_LopHoc).MaLopHoc)</td>
                                         <td rowspan="2">@hocphan.SiSo</td>
-                                        <td rowspan="2"></td>
+                                        <td rowspan="2">@monHocModel.ConLai(hocphan.Id.ToString(),hocphan.SiSo)</td>
                                         <!--Lý thuyết-->
                                         <td></td>
                                         <td>@hocphan.LyThuyet.Thu</td>

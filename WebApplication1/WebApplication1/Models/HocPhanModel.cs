@@ -56,6 +56,7 @@ namespace WebApplication1.Models
         {
             HocPhanCollection.DeleteOne(Builders<HocPhan>.Filter.Eq("_id", ObjectId.Parse(id)));
         }
+        
 
     }
 }
