@@ -11,9 +11,6 @@
     GiangVienModel giangVienModel = new GiangVienModel();
     HocPhanModel hocPhanModel = new HocPhanModel();
     MonHocModel monHocModel = new MonHocModel();
-
-    string tenMonHoc = "";
-    string maMonHoc = "";
 }
 
 <head>
@@ -284,7 +281,7 @@
             }
             <div class="form-group">
                 <label class="control-label col-md-4">@item.TenMonHoc:</label>
-                <input class="form-control col-md-6 w3-disabled" value="@valueInput" name="DanhSachHocPhan" id="@("value" + item.MaMonHoc)" />
+                <input readonly="readonly" class="form-control col-md-6 w3-disabled" value="@valueInput" name="DanhSachHocPhan" id="@("value" + item.MaMonHoc)" />
                 <a onclick="@("xoaHocPhan" + item.MaMonHoc)()" class="badge w3-red">Xóa</a>
             </div>
 
@@ -377,9 +374,6 @@
 
         }
 
-        if ($('#@("value"+item.MaMonHoc)').val() != $('#@("oldvalue"+item.MaMonHoc)').val())
-
-            toastr.success('chọn thành công ','@item.TenMonHoc');
         }
     </script>
 }
@@ -501,24 +495,27 @@
     <link href="~/Content/toastr.css" rel="stylesheet" />
     <script src="~/Scripts/toastr.min.js"></script>
 
+
+    @foreach (var itemSetUpMonHoc in monHocs)
+    {
+        string valueInput = "";
+        string maMonHocDaDangKy = "";
+        foreach (string itemHocPhanDaDangKy in Model)
+        {
+            if (monHocModel.isHocPhanThuocMonHoc(itemSetUpMonHoc.Id.ToString(), itemHocPhanDaDangKy))
+            {
+                valueInput = itemHocPhanDaDangKy;
+                maMonHocDaDangKy = itemSetUpMonHoc.MaMonHoc;
+            }
+        }
+        <script>
+            $('#@valueInput').prop('checked', true);
+            @("changeTKB"+ maMonHocDaDangKy)();
+            $('#@("button"+ maMonHocDaDangKy)').addClass('w3-green');
+        </script>
+    }
+
 }
 @Html.Raw(TempData["html"])
 
-    
-@foreach (var itemSetUpMonHoc in monHocs)
-{
-    string valueInput = "";
-    foreach (string itemHocPhanDaDangKy in Model)
-    {
-        if (monHocModel.isHocPhanThuocMonHoc(itemSetUpMonHoc.Id.ToString(), itemHocPhanDaDangKy))
-        {
-            valueInput = itemHocPhanDaDangKy;
-        }
 
-        <script>
-            $('#@valueInput').prop('checked', true);
-        </script>
-            
-    }
-}
-    
