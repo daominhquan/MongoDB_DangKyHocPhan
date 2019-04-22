@@ -16,7 +16,7 @@ namespace WebApplication1.Models
         private IMongoCollection<LopHoc> LopHocCollection;
         public LopHocModel()
         {
-            mongoClient = new MongoClient("mongodb://localhost");
+            mongoClient = new MongoClient(new configWEB().connectionstring);
             var db = mongoClient.GetDatabase("DangKyHocPhan");
             LopHocCollection = db.GetCollection<LopHoc>("LopHoc");
         }

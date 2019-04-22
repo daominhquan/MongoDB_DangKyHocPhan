@@ -16,7 +16,7 @@ namespace WebApplication1.Models
         private IMongoCollection<MonHoc> MonHocCollection;
         public MonHocModel()
         {
-            mongoClient = new MongoClient("mongodb://localhost");
+            mongoClient = new MongoClient(new configWEB().connectionstring);
             var db = mongoClient.GetDatabase("DangKyHocPhan");
             MonHocCollection = db.GetCollection<MonHoc>("MonHoc");
         }
@@ -30,14 +30,14 @@ namespace WebApplication1.Models
             return MonHocCollection.AsQueryable<MonHoc>().SingleOrDefault(a => a.Id == MonHocId);
         }
 
-        public bool isHocPhanThuocMonHoc(string idMonHoc ,string idHocPhan)
+        public bool isHocPhanThuocMonHoc(string idMonHoc, string idHocPhan)
         {
             MonHocModel monHocModel = new MonHocModel();
             HocPhanModel hocPhanModel = new HocPhanModel();
             MonHoc monHoc = monHocModel.find(idMonHoc);
-            foreach(HocPhan item in monHoc.DanhSachHocPhan)
+            foreach (HocPhan item in monHoc.DanhSachHocPhan)
             {
-                if(item.Id.ToString() == idHocPhan)
+                if (item.Id.ToString() == idHocPhan)
                 {
                     return true;
                 }
@@ -59,28 +59,44 @@ namespace WebApplication1.Models
                     .Set("DanhSachHocPhan", MonHoc.DanhSachHocPhan)
                 );
         }
-        
+
         public void delete(String id)
         {
             MonHocCollection.DeleteOne(Builders<MonHoc>.Filter.Eq("_id", ObjectId.Parse(id)));
         }
 
-        public int ConLai(string idHocPhan,int SiSo)
+        public int ConLai(string idHocPhan, int SiSo)
         {
             AccountModel accountModel = new AccountModel();
             int conLai = SiSo;
-            foreach(var item in accountModel.findAll())
+            foreach (var item in accountModel.findAll())
             {
-                foreach(var itemHocPhanDaDangKy in item.HocPhanDaDangKy)
+                if (item.HocPhanDaDangKy != null)
                 {
-                    if (itemHocPhanDaDangKy == idHocPhan)
+                    foreach (var itemHocPhanDaDangKy in item.HocPhanDaDangKy)
                     {
-                        conLai = conLai -1;
+                        if (itemHocPhanDaDangKy == idHocPhan)
+                        {
+                            conLai = conLai - 1;
+                        }
                     }
                 }
-            }
 
+            }
             return conLai;
+        }
+        public HocPhan getHocphan(string id_monhoc,string id_hocphan)
+        {
+            MonHocModel monHocModel = new MonHocModel();
+            MonHoc monhoc = monHocModel.find(id_monhoc);
+            foreach(var item in monhoc.DanhSachHocPhan)
+            {
+                if (item.Id.ToString() == id_hocphan)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
     }
 }

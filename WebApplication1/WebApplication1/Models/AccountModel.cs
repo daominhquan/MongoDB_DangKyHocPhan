@@ -16,8 +16,9 @@ namespace WebApplication1.Models
         private IMongoCollection<Account> accountCollection;
         public AccountModel()
         {
-            mongoClient = new MongoClient("mongodb://localhost");
+            mongoClient = new MongoClient(new configWEB().connectionstring);
             var db = mongoClient.GetDatabase("DangKyHocPhan");
+
             accountCollection = db.GetCollection<Account>("account");
         }
         public List<Account> findAll()
@@ -40,7 +41,7 @@ namespace WebApplication1.Models
         }
         public void update(Account account)
         {
-            accountCollection.UpdateOne(
+            accountCollection.UpdateOneAsync(
                 Builders<Account>.Filter.Eq("_id", ObjectId.Parse(account.Id.ToString())),
                 Builders<Account>.Update
                     .Set("Username", account.Username)
@@ -49,9 +50,6 @@ namespace WebApplication1.Models
                     .Set("Status", account.Status)
                     .Set("id_LopHoc", account.id_LopHoc)
                     .Set("HocPhanDaDangKy", account.HocPhanDaDangKy)
-
-
-
                 );
         }
         public void delete(String id)

@@ -16,7 +16,7 @@ namespace WebApplication1.Models
         private IMongoCollection<GiangVien> GiangVienCollection;
         public GiangVienModel()
         {
-            mongoClient = new MongoClient("mongodb://localhost");
+            mongoClient = new MongoClient(new configWEB().connectionstring);
             var db = mongoClient.GetDatabase("DangKyHocPhan");
             GiangVienCollection = db.GetCollection<GiangVien>("GiangVien");
         }

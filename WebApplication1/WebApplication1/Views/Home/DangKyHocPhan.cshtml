@@ -220,6 +220,7 @@
                                        $('#@hocphan.Id.ToString()').prop('checked', true);
                                         $('#@("oldvalue"+item.MaMonHoc)').val($('#@("value"+item.MaMonHoc)').val());
                                        $('#@("value"+item.MaMonHoc)').val('@hocphan.Id');
+                                       $('#@("value_id_monhoc"+item.MaMonHoc)').val('@item.Id');
                                        $('#@("button"+item.MaMonHoc)').addClass('w3-green')"
                                        class="filterDiv @("filteritem"+item.MaMonHoc) hahahahaha w3-hover-amber">
                                     <tr>
@@ -233,7 +234,7 @@
                                         <td rowspan="2">@item.TenMonHoc</td>
                                         <td rowspan="2">@(lopHocModel.find(hocphan.id_LopHoc).MaLopHoc)</td>
                                         <td rowspan="2">@hocphan.SiSo</td>
-                                        <td rowspan="2">@monHocModel.ConLai(hocphan.Id.ToString(),hocphan.SiSo)</td>
+                                        <td rowspan="2">@monHocModel.ConLai(hocphan.Id.ToString(), hocphan.SiSo)</td>
                                         <!--Lý thuyết-->
                                         <td></td>
                                         <td>@hocphan.LyThuyet.Thu</td>
@@ -272,18 +273,29 @@
         foreach (var item in monHocs)
         {
             string valueInput = "";
-            foreach (string itemHocPhanDaDangKy in Model)
+            if (Model != null)
             {
-                if (monHocModel.isHocPhanThuocMonHoc(item.Id.ToString(), itemHocPhanDaDangKy))
+                foreach (string itemHocPhanDaDangKy in Model)
                 {
-                    valueInput = itemHocPhanDaDangKy;
+
+                    if (monHocModel.isHocPhanThuocMonHoc(item.Id.ToString(), itemHocPhanDaDangKy))
+                    {
+                        valueInput = itemHocPhanDaDangKy;
+                    }
                 }
             }
+
             <div class="form-group">
                 <label class="control-label col-md-4">@item.TenMonHoc:</label>
                 <input readonly="readonly" class="form-control col-md-6 w3-disabled" value="@valueInput" name="DanhSachHocPhan" id="@("value" + item.MaMonHoc)" />
                 <a onclick="@("xoaHocPhan" + item.MaMonHoc)()" class="badge w3-red">Xóa</a>
             </div>
+            <div class="form-group w3-hide">
+                <label class="control-label col-md-4">@item.TenMonHoc:</label>
+                <input readonly="readonly" class="form-control col-md-6 w3-disabled" value="@item.Id" name="MonHoc" id="@("value_id_monhoc" + item.Id)" />
+                <a onclick="@("xoaHocPhan" + item.MaMonHoc)()" class="badge w3-red">Xóa</a>
+            </div>
+            <br />
 
         }
         <div class="form-group">
@@ -402,6 +414,8 @@
             @("lammoi"+item.MaMonHoc)();
             $('#' + $('#@("value"+item.MaMonHoc)').val()).prop('checked', false);
             $('#@("value" + item.MaMonHoc)').val('');
+            $('#@("value_id_monhoc" + item.MaMonHoc)').val('');
+
             $('#@("button"+item.MaMonHoc)').removeClass('w3-green');
             toastr.info('xóa thành công','@item.TenMonHoc');
         }
@@ -500,14 +514,18 @@
     {
         string valueInput = "";
         string maMonHocDaDangKy = "";
-        foreach (string itemHocPhanDaDangKy in Model)
+        if (Model != null)
         {
-            if (monHocModel.isHocPhanThuocMonHoc(itemSetUpMonHoc.Id.ToString(), itemHocPhanDaDangKy))
+            foreach (string itemHocPhanDaDangKy in Model)
             {
-                valueInput = itemHocPhanDaDangKy;
-                maMonHocDaDangKy = itemSetUpMonHoc.MaMonHoc;
+                if (monHocModel.isHocPhanThuocMonHoc(itemSetUpMonHoc.Id.ToString(), itemHocPhanDaDangKy))
+                {
+                    valueInput = itemHocPhanDaDangKy;
+                    maMonHocDaDangKy = itemSetUpMonHoc.MaMonHoc;
+                }
             }
         }
+
         <script>
             $('#@valueInput').prop('checked', true);
             @("changeTKB"+ maMonHocDaDangKy)();

@@ -16,7 +16,7 @@ namespace WebApplication1.Models
         private IMongoCollection<HocPhan> HocPhanCollection;
         public HocPhanModel()
         {
-            mongoClient = new MongoClient("mongodb://localhost");
+            mongoClient = new MongoClient(new configWEB().connectionstring);
             var db = mongoClient.GetDatabase("DangKyHocPhan");
             HocPhanCollection = db.GetCollection<HocPhan>("HocPhan");
         }

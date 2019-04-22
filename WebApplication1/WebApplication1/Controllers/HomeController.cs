@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -126,7 +127,6 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Index");
             }
-
             MonHocModel monHoc = new MonHocModel();
             ViewBag.listMonHoc = monHoc.findAll();
             Account account = accountModel.find_username(Session[currentAccount].ToString());
@@ -134,42 +134,106 @@ namespace WebApplication1.Controllers
             {
                 return View(account.HocPhanDaDangKy);
             }
-            
+
 
             return View();
         }
         [HttpPost]
-        public ActionResult DangKyHocPhan(List<string> DanhSachHocPhan)
+        public ActionResult DangKyHocPhan(List<string> DanhSachHocPhan, List<string> MonHoc)
         {
             if (!isUserNameExist())
             {
                 return RedirectToAction("Index");
             }
-            //foreach (string item in DanhSachHocPhan)
-            //{
-            //    if (item == null)
-            //    {
-            //        DanhSachHocPhan.Remove(item);
-            //    }
-            //}
+            //Create client connection to our MongoDB database
+            var client = new MongoClient(new configWEB().connectionstring);
 
-            MonHocModel monHoc = new MonHocModel();
+            //Create a session object that is used when leveraging transactions
+            var session = client.StartSession();
+
+            MonHocModel monHocModel = new MonHocModel();
             HocPhanModel hocPhanModel = new HocPhanModel();
             AccountModel accountModel = new AccountModel();
             Account account = new AccountModel().find_username(Session[currentAccount].ToString());
-            List<string> newHocPhanDaDangKy = DanhSachHocPhan;
-            account.HocPhanDaDangKy = newHocPhanDaDangKy;
+
+            string monHoc_Success = "";
+            string monHoc_ThatBai = "";
+            bool isThatBai = false;
             if (account != null)
             {
+                session.StartTransaction();
+                account.HocPhanDaDangKy = DanhSachHocPhan;
                 accountModel.update(account);
+
+
+                ThongBao_Error("Error writing to MongoDB: ");
+                session.AbortTransaction();
+                ViewBag.listMonHoc = monHocModel.findAll();
+                ViewBag.accountInfo = accountModel.find_username(Session[currentAccount].ToString());
+                return View(DanhSachHocPhan);
+                //try
+                //{
+                //    for (int i = 0; i < DanhSachHocPhan.Count(); i++)
+                //    {
+                //        if (DanhSachHocPhan[i] != "")
+                //        {
+                //            if (monHocModel.ConLai(account.HocPhanDaDangKy[i], monHocModel.getHocphan(MonHoc[i], account.HocPhanDaDangKy[i]).SiSo) >= 0)
+                //            {
+                //                monHoc_Success = monHoc_Success + ", " + monHocModel.find(MonHoc[i]).TenMonHoc + " ";
+                //            }
+                //            else
+                //            {
+                //                monHoc_ThatBai = monHoc_ThatBai + ", " + monHocModel.find(MonHoc[i]).TenMonHoc + " ";
+                //                isThatBai = true;
+                //            }
+                //        }
+                //    }
+                //    if (isThatBai)
+                //    {
+                //        ThongBao_Error("học phần môn " + monHoc_ThatBai + " đã hết chỗ , vui lòng chọn học phần khác");
+                //        session.AbortTransactionAsync();
+                //    }
+                //    else
+                //    {
+                //        ThongBao_Success("Đăng ký học phần " + monHoc_Success + "  thành công!");
+                //        session.CommitTransaction();
+                //    }
+                //    ViewBag.listMonHoc = monHocModel.findAll();
+                //    ViewBag.accountInfo = accountModel.find_username(Session[currentAccount].ToString());
+                //    return View(DanhSachHocPhan);
+
+                //}
+                //catch (Exception e)
+                //{
+                //    ThongBao_Error("Error writing to MongoDB: " + e.Message);
+                //    session.AbortTransaction();
+                //    ViewBag.listMonHoc = monHocModel.findAll();
+                //    ViewBag.accountInfo = accountModel.find_username(Session[currentAccount].ToString());
+                //    return View(DanhSachHocPhan);
+                //}
             }
 
-            ViewBag.listMonHoc = monHoc.findAll();
-            ViewBag.accountInfo = accountModel.find_username(Session[currentAccount].ToString());
 
-            TempData["script"] = "toastr.success('Đăng ký học phần thành công!', 'Thành công')";
+
+
+            ViewBag.listMonHoc = monHocModel.findAll();
+            ViewBag.accountInfo = accountModel.find_username(Session[currentAccount].ToString());
             return View(DanhSachHocPhan);
         }
+
+        public void ThongBao_Success(string noiDung)
+        {
+            TempData["script"] = "toastr.success('" + noiDung + "', 'Thành công')";
+        }
+        public void ThongBao_Error(string noiDung)
+        {
+            TempData["script"] = "toastr.error('" + noiDung + "', 'Thất bại')";
+        }
+        public void ThongBao_Warning(string noiDung)
+        {
+            TempData["script"] = "toastr.warning('" + noiDung + "', 'Thất bại')";
+        }
+
         public bool isUserNameExist()
         {
             if (Session[currentAccount] == null)
