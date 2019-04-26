@@ -26,7 +26,7 @@ namespace WebApplication1.Models
         }
         public HocPhan find(string id)
         {
-            if(id== "" || id== null)
+            if (id == "" || id == null)
             {
                 return null;
             }
@@ -42,6 +42,7 @@ namespace WebApplication1.Models
         public void update(HocPhan HocPhan)
         {
             HocPhanCollection.UpdateOne(
+
                 Builders<HocPhan>.Filter.Eq("_id", ObjectId.Parse(HocPhan.Id.ToString())),
                 Builders<HocPhan>.Update
                     .Set("id_LopHoc", HocPhan.id_LopHoc)
@@ -52,11 +53,27 @@ namespace WebApplication1.Models
                     .Set("Status", HocPhan.Status)
                 );
         }
+        public void capnhathocphan(HocPhan HocPhan, IClientSessionHandle session)
+        {
+            HocPhanCollection.UpdateOne(session,
+
+                Builders<HocPhan>.Filter.Eq("_id", ObjectId.Parse(HocPhan.Id.ToString())),
+                Builders<HocPhan>.Update
+                    .Set("id_LopHoc", HocPhan.id_LopHoc)
+                    .Set("SiSo", HocPhan.SiSo)
+                    .Set("LyThuyet", HocPhan.LyThuyet)
+                    .Set("ThucHanh", HocPhan.ThucHanh)
+                    .Set("DanhSachSinhVien", HocPhan.DanhSachSinhVien)
+                    .Set("Status", HocPhan.Status)
+                );
+        }
+
+
         public void delete(String id)
         {
             HocPhanCollection.DeleteOne(Builders<HocPhan>.Filter.Eq("_id", ObjectId.Parse(id)));
         }
-        
+
 
     }
 }

@@ -52,6 +52,20 @@ namespace WebApplication1.Models
                     .Set("HocPhanDaDangKy", account.HocPhanDaDangKy)
                 );
         }
+        public void updateHocPhanDaDangKy(Account account,IClientSessionHandle session)
+        {
+            accountCollection.UpdateOne(session,
+                Builders<Account>.Filter.Eq("_id", ObjectId.Parse(account.Id.ToString())),
+                Builders<Account>.Update
+                    .Set("Username", account.Username)
+                    .Set("Password", account.Password)
+                    .Set("Fullname", account.Fullname)
+                    .Set("Status", account.Status)
+                    .Set("id_LopHoc", account.id_LopHoc)
+                    .Set("HocPhanDaDangKy", account.HocPhanDaDangKy)
+                );
+        }
+
         public void delete(String id)
         {
             accountCollection.DeleteOne(Builders<Account>.Filter.Eq("_id", ObjectId.Parse(id)));
