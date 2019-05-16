@@ -38,11 +38,12 @@
                 @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
-            @Html.LabelFor(model => model.MSSV, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_LopHoc, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MSSV, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MSSV, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.id_LopHoc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.id_LopHoc, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -55,11 +56,9 @@
                 </div>
             </div>
         </div>
-        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input class="w3-hide" value="@ViewBag.id" name="id" />
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>

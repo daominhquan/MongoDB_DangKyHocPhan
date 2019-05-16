@@ -1,0 +1,389 @@
+{
+  "_id": { "$oid": "5cb43ccce1ceba339c1b589f" },
+  "MaMonHoc": "1230384",
+  "TenMonHoc": "Lập trình trên thiết bị di động",
+  "DanhSachHocPhan": [
+    {
+      "_id": { "$oid": "000000000000000000000000" },
+      "id_LopHoc": "5cb43e3be1ceba38902da8cf",
+      "SiSo": { "$numberInt": "0" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "7" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B34",
+        "id_GiangVien": "5cb2e6f1e1ceba13d01bc1b9"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "3" },
+        "TietBD": { "$numberInt": "4" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM06",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "DanhSachSinhVien": null,
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb43fbee1ceba2c9c563393" },
+      "id_LopHoc": "5cb43e3be1ceba38902da8cf",
+      "SiSo": { "$numberInt": "23" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "7" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B34",
+        "id_GiangVien": "5cb2e6f1e1ceba13d01bc1b9"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "1" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM06",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "DanhSachSinhVien": null,
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb43fd3e1ceba2c9c563394" },
+      "id_LopHoc": "5cb43e3be1ceba38902da8cf",
+      "SiSo": { "$numberInt": "23" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "7" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B34",
+        "id_GiangVien": "5cb2e6f1e1ceba13d01bc1b9"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "3" },
+        "TietBD": { "$numberInt": "1" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM06",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "DanhSachSinhVien": null,
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb43ff9e1ceba2c9c563395" },
+      "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+      "SiSo": { "$numberInt": "23" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "7" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B34",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "1" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM06",
+        "id_GiangVien": "5cb2e6f1e1ceba13d01bc1b9"
+      },
+      "DanhSachSinhVien": null,
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb44033e1ceba2c9c563396" },
+      "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+      "SiSo": { "$numberInt": "23" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "7" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B36",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "3" },
+        "TietBD": { "$numberInt": "1" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM15",
+        "id_GiangVien": "5cb2e6f1e1ceba13d01bc1b9"
+      },
+      "DanhSachSinhVien": null,
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb4405ae1ceba2c9c563397" },
+      "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+      "SiSo": { "$numberInt": "23" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "7" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B36",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "3" },
+        "TietBD": { "$numberInt": "4" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM15",
+        "id_GiangVien": "5cb2e6f1e1ceba13d01bc1b9"
+      },
+      "DanhSachSinhVien": null,
+      "Status": false
+    }
+  ]
+}
+{
+  
+  "_id": { "$oid": "5cb440e8e1ceba2c9c563398" },
+  "MaMonHoc": "1224054",
+  "TenMonHoc": "Thương mại điện tử",
+  "DanhSachHocPhan": [
+    {
+      "_id": { "$oid": "5cb4410fe1ceba2c9c563399" },
+      "id_LopHoc": "5cb43e3be1ceba38902da8cf",
+      "SiSo": { "$numberInt": "22" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "10" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B36",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "4" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM06",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb441cfe1ceba2c9c56339b" },
+      "id_LopHoc": "5cb43e3be1ceba38902da8cf",
+      "SiSo": { "$numberInt": "22" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "10" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B36",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "5" },
+        "TietBD": { "$numberInt": "1" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM06",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb441f7e1ceba2c9c56339c" },
+      "id_LopHoc": "5cb43e3be1ceba38902da8cf",
+      "SiSo": { "$numberInt": "22" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "10" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B36",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "5" },
+        "TietBD": { "$numberInt": "4" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM06",
+        "id_GiangVien": "5cb2e6f6e1ceba13d01bc1ba"
+      },
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb44229e1ceba2c9c56339e" },
+      "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+      "SiSo": { "$numberInt": "22" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "10" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B34",
+        "id_GiangVien": "5cb44210e1ceba2c9c56339d"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "4" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM15",
+        "id_GiangVien": "5cb2e6f1e1ceba13d01bc1b9"
+      },
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb44260e1ceba2c9c56339f" },
+      "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+      "SiSo": { "$numberInt": "22" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "10" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B34",
+        "id_GiangVien": "5cb44210e1ceba2c9c56339d"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "5" },
+        "TietBD": { "$numberInt": "1" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM15",
+        "id_GiangVien": "5cb44210e1ceba2c9c56339d"
+      },
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb4427ee1ceba2c9c5633a0" },
+      "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+      "SiSo": { "$numberInt": "22" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "4" },
+        "TietBD": { "$numberInt": "10" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B34",
+        "id_GiangVien": "5cb44210e1ceba2c9c56339d"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "5" },
+        "TietBD": { "$numberInt": "4" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM15",
+        "id_GiangVien": "5cb2e6f1e1ceba13d01bc1b9"
+      },
+      "Status": false
+    }
+  ]
+}
+{
+  
+  "_id": { "$oid": "5cb442cae1ceba2c9c5633a1" },
+  "MaMonHoc": "1222014",
+  "TenMonHoc": "Các hệ quản trị cơ sở dữ liệu",
+  "DanhSachHocPhan": [
+    {
+      "_id": { "$oid": "5cb442ece1ceba2c9c5633a2" },
+      "id_LopHoc": "5cb43e3be1ceba38902da8cf",
+      "SiSo": { "$numberInt": "24" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "2" },
+        "TietBD": { "$numberInt": "7" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B44",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "2" },
+        "TietBD": { "$numberInt": "1" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM05",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb44326e1ceba2c9c5633a3" },
+      "id_LopHoc": "5cb43e3be1ceba38902da8cf",
+      "SiSo": { "$numberInt": "24" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "2" },
+        "TietBD": { "$numberInt": "7" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B44",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "2" },
+        "TietBD": { "$numberInt": "4" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM05",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb44373e1ceba2c9c5633a4" },
+      "id_LopHoc": "5cb43e3be1ceba38902da8cf",
+      "SiSo": { "$numberInt": "24" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "2" },
+        "TietBD": { "$numberInt": "7" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B44",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "3" },
+        "TietBD": { "$numberInt": "1" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM03",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb44393e1ceba2c9c5633a5" },
+      "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+      "SiSo": { "$numberInt": "1" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "2" },
+        "TietBD": { "$numberInt": "10" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B44",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "3" },
+        "TietBD": { "$numberInt": "4" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM03",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb443b2e1ceba2c9c5633a6" },
+      "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+      "SiSo": { "$numberInt": "1" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "2" },
+        "TietBD": { "$numberInt": "10" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B44",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "6" },
+        "TietBD": { "$numberInt": "1" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM15",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "Status": false
+    },
+    {
+      "_id": { "$oid": "5cb443d8e1ceba2c9c5633a7" },
+      "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+      "SiSo": { "$numberInt": "0" },
+      "LyThuyet": {
+        "Thu": { "$numberInt": "2" },
+        "TietBD": { "$numberInt": "10" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "B44",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "ThucHanh": {
+        "Thu": { "$numberInt": "6" },
+        "TietBD": { "$numberInt": "4" },
+        "SoTiet": { "$numberInt": "3" },
+        "Phong": "PM15",
+        "id_GiangVien": "5cb2e6e6e1ceba13d01bc1b8"
+      },
+      "Status": false
+    }
+  ]
+}

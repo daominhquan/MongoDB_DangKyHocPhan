@@ -26,8 +26,15 @@ namespace WebApplication1.Models
         }
         public LopHoc find(string id)
         {
-            var LopHocId = new ObjectId(id);
-            return LopHocCollection.AsQueryable<LopHoc>().SingleOrDefault(a => a.Id == LopHocId);
+            try
+            {
+                var LopHocId = new ObjectId(id);
+                return LopHocCollection.AsQueryable<LopHoc>().SingleOrDefault(a => a.Id == LopHocId);
+            }
+           catch(Exception e)
+            {
+                return null;
+            }
         }
         public void create(LopHoc LopHoc)
         {

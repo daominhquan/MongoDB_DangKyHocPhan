@@ -32,7 +32,15 @@ namespace WebApplication1.Models
         }
         public Account find_username(string username)
         {
-            return accountCollection.AsQueryable<Account>().SingleOrDefault(a => a.Username == username);
+            try
+            {
+                return accountCollection.AsQueryable<Account>().SingleOrDefault(a => a.Username == username);
+            }
+            catch (MongoConnectionException)
+            {
+                return null;
+            }
+
         }
 
         public void create(Account account)
@@ -52,7 +60,7 @@ namespace WebApplication1.Models
                     .Set("HocPhanDaDangKy", account.HocPhanDaDangKy)
                 );
         }
-        public void updateHocPhanDaDangKy(Account account,IClientSessionHandle session)
+        public void updateHocPhanDaDangKy(Account account, IClientSessionHandle session)
         {
             accountCollection.UpdateOne(session,
                 Builders<Account>.Filter.Eq("_id", ObjectId.Parse(account.Id.ToString())),

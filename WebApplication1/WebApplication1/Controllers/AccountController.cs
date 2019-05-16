@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Entities;
@@ -53,6 +54,15 @@ namespace WebApplication1.Controllers
             else if(model.find(id)==null)
             {
                 return RedirectToAction("Index");
+            }
+            Account a = model.find(id);
+            while (a.Status == true)
+            {
+                a = model.find(id);
+                if(a.Status == false)
+                {
+                    break;
+                }
             }
             ViewBag.id = id;
             return View("Edit", model.find(id));

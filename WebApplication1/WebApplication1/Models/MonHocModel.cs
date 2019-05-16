@@ -29,6 +29,11 @@ namespace WebApplication1.Models
             var MonHocId = new ObjectId(id);
             return MonHocCollection.AsQueryable<MonHoc>().SingleOrDefault(a => a.Id == MonHocId);
         }
+         public MonHoc find(string id, IClientSessionHandle session)
+        {
+            var MonHocId = new ObjectId(id);
+            return MonHocCollection.AsQueryable<MonHoc>().SingleOrDefault(a => a.Id == MonHocId);
+        }
 
         public bool isHocPhanThuocMonHoc(string idMonHoc, string idHocPhan)
         {
@@ -98,5 +103,40 @@ namespace WebApplication1.Models
             }
             return null;
         }
+        public void lockHocPhan(string id_hocphan)
+        {
+            MonHocModel monHocModel = new MonHocModel();
+            
+            foreach(var monhoc in monHocModel.findAll())
+            {
+                foreach (var hocphan in monhoc.DanhSachHocPhan)
+                {
+                    if(hocphan.Id.ToString()== id_hocphan)
+                    {
+                        hocphan.Status = true;
+                        monHocModel.update(monhoc);
+                        return;
+                    }
+                }
+            }
+        }
+        public void unlockHocPhan(string id_hocphan)
+        {
+            MonHocModel monHocModel = new MonHocModel();
+
+            foreach (var monhoc in monHocModel.findAll())
+            {
+                foreach (var hocphan in monhoc.DanhSachHocPhan)
+                {
+                    if (hocphan.Id.ToString() == id_hocphan)
+                    {
+                        hocphan.Status = false;
+                        monHocModel.update(monhoc);
+                        return;
+                    }
+                }
+            }
+        }
+
     }
 }

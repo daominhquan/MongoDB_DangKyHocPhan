@@ -1,0 +1,24 @@
+{
+  
+  "_id": { "$oid": "5cb86090e1ceba1cccf4a4d3" },
+  "Username": "15dh110176",
+  "Password": "123123",
+  "Fullname": "Đào Minh Quân",
+  "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+  "HocPhanDaDangKy": [ "", "", "" ],
+  "Status": false
+}
+{"_id":{"$oid":"5cba8f8fe1ceba19340554d1"},"Username":"15dh110111","Password":"123123","Fullname":"Lại Quang Hưng","id_LopHoc":"5cb43e34e1ceba38902da8ce","HocPhanDaDangKy":["","","5cb442ece1ceba2c9c5633a2"],"Status":false}
+{"_id":{"$oid":"5cbd6112e1ceba01704398a8"},"Username":"15dh110333","Password":"123123","Fullname":"123123","id_LopHoc":"5cb43e34e1ceba38902da8ce","HocPhanDaDangKy":["5cb4405ae1ceba2c9c563397","5cb441cfe1ceba2c9c56339b","5cb44326e1ceba2c9c5633a3"],"Status":false}
+{"_id":{"$oid":"5cbd617ee1ceba1574771c35"},"Username":"15dh110444","Password":"123123","Fullname":"Đào Minh Quân","id_LopHoc":"5cb43e34e1ceba38902da8ce","HocPhanDaDangKy":["","",""],"Status":false}
+{"_id":{"$oid":"5cc3fac5e1ceba1c04e6fb40"},"Username":"15dh110358","Password":"insatiable123","Fullname":"Long","id_LopHoc":"5cb43e34e1ceba38902da8ce","HocPhanDaDangKy":["5cb44033e1ceba2c9c563396","5cb441f7e1ceba2c9c56339c","5cb443b2e1ceba2c9c5633a6"],"Status":false}
+{
+  
+  "_id": { "$oid": "5cd78fe9e1ceba149cc4a4fc" },
+  "Username": "15dh111333",
+  "Password": "123123",
+  "Fullname": "minh quan",
+  "id_LopHoc": "5cb43e34e1ceba38902da8ce",
+  "HocPhanDaDangKy": [ "5cb43ff9e1ceba2c9c563395", "5cb44260e1ceba2c9c56339f", "5cb44393e1ceba2c9c5633a5" ],
+  "Status": false
+}

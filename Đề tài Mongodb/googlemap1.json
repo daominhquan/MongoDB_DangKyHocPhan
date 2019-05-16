@@ -1,0 +1,157 @@
+{
+   "geocoded_waypoints" : [
+      {
+         "geocoder_status" : "OK",
+         "place_id" : "ChIJGVg5fdoudTERpna4Imix4Bo",
+         "types" : [ "establishment", "point_of_interest" ]
+      },
+      {
+         "geocoder_status" : "OK",
+         "place_id" : "ChIJITkFa9wudTER1AIFoTImHCA",
+         "types" : [ "establishment", "point_of_interest" ]
+      }
+   ],
+   "routes" : [
+      {
+         "bounds" : {
+            "northeast" : {
+               "lat" : 10.7794522,
+               "lng" : 106.6687421
+            },
+            "southwest" : {
+               "lat" : 10.7734294,
+               "lng" : 106.6646995
+            }
+         },
+         "copyrights" : "D? li?u b?n ð? ©2019 Google",
+         "legs" : [
+            {
+               "distance" : {
+                  "text" : "1,1 km",
+                  "value" : 1098
+               },
+               "duration" : {
+                  "text" : "5 phút",
+                  "value" : 284
+               },
+               "end_address" : "772 Sý V?n H?nh, Phý?ng 12, Qu?n 10, H? Chí Minh, Vi?t Nam",
+               "end_location" : {
+                  "lat" : 10.7734294,
+                  "lng" : 106.6687421
+               },
+               "start_address" : "134 Tô Hi?n Thành, Phý?ng 13, Qu?n 10, H? Chí Minh, Vi?t Nam",
+               "start_location" : {
+                  "lat" : 10.7794522,
+                  "lng" : 106.6675772
+               },
+               "steps" : [
+                  {
+                     "distance" : {
+                        "text" : "0,4 km",
+                        "value" : 397
+                     },
+                     "duration" : {
+                        "text" : "2 phút",
+                        "value" : 99
+                     },
+                     "end_location" : {
+                        "lat" : 10.7772747,
+                        "lng" : 106.6646995
+                     },
+                     "html_instructions" : "Ði v? hý?ng \u003cb\u003eTây Nam\u003c/b\u003e lên \u003cb\u003eTô Hi?n Thành\u003c/b\u003e v? phía \u003cb\u003eH?m 243 Tô Hi?n Thành\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eBãng qua V?t tý qu?ng caìo Anh Tài (? phía bên ph?i)\u003c/div\u003e",
+                     "polyline" : {
+                        "points" : "qjx`Ako`jSPV|@lAZd@~@tAj@z@PT^f@PXVb@T\\`@h@Vb@LP`@f@"
+                     },
+                     "start_location" : {
+                        "lat" : 10.7794522,
+                        "lng" : 106.6675772
+                     },
+                     "travel_mode" : "DRIVING"
+                  },
+                  {
+                     "distance" : {
+                        "text" : "0,2 km",
+                        "value" : 215
+                     },
+                     "duration" : {
+                        "text" : "1 phút",
+                        "value" : 69
+                     },
+                     "end_location" : {
+                        "lat" : 10.7759043,
+                        "lng" : 106.6660925
+                     },
+                     "html_instructions" : "R? \u003cb\u003etrái\u003c/b\u003e t?i Công Ty TNHH MTV AA / Thanh Ngân vào \u003cb\u003eH?m 339 Tô Hi?n Thành\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eBãng qua Ran House (? phía bên ph?i)\u003c/div\u003e",
+                     "maneuver" : "turn-left",
+                     "polyline" : {
+                        "points" : "}|w`Ak}_jStAyAf@i@h@o@p@o@f@c@NM"
+                     },
+                     "start_location" : {
+                        "lat" : 10.7772747,
+                        "lng" : 106.6646995
+                     },
+                     "travel_mode" : "DRIVING"
+                  },
+                  {
+                     "distance" : {
+                        "text" : "87 m",
+                        "value" : 87
+                     },
+                     "duration" : {
+                        "text" : "1 phút",
+                        "value" : 23
+                     },
+                     "end_location" : {
+                        "lat" : 10.7763961,
+                        "lng" : 106.6667104
+                     },
+                     "html_instructions" : "R? \u003cb\u003etrái\u003c/b\u003e t?i Viva Star Coffee Tô Hi?n Thành vào \u003cb\u003eH?m 573 Sý V?n H?nh\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eBãng qua Ph?ng Khám Nam Khoa Thãng Long (? phía bên ph?i)\u003c/div\u003e",
+                     "maneuver" : "turn-left",
+                     "polyline" : {
+                        "points" : "ktw`Aaf`jScB{B"
+                     },
+                     "start_location" : {
+                        "lat" : 10.7759043,
+                        "lng" : 106.6660925
+                     },
+                     "travel_mode" : "DRIVING"
+                  },
+                  {
+                     "distance" : {
+                        "text" : "0,4 km",
+                        "value" : 399
+                     },
+                     "duration" : {
+                        "text" : "2 phút",
+                        "value" : 93
+                     },
+                     "end_location" : {
+                        "lat" : 10.7734294,
+                        "lng" : 106.6687421
+                     },
+                     "html_instructions" : "R? \u003cb\u003eph?i\u003c/b\u003e t?i Dntn Hoàng Th? Qu?nh Hýõng - Cn vào \u003cb\u003eSý V?n H?nh\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eBãng qua Công Ty Tnhh Tm Dv V?nh Phú (? phía bên trái)\u003c/div\u003e\u003cdiv style=\"font-size:0.9em\"\u003eÐi?m ð?n s? ? bên ph?i\u003c/div\u003e",
+                     "maneuver" : "turn-right",
+                     "polyline" : {
+                        "points" : "oww`A}i`jSl@e@rAgAl@e@f@YNI\\SHEvAq@dAm@b@WZOz@e@f@U"
+                     },
+                     "start_location" : {
+                        "lat" : 10.7763961,
+                        "lng" : 106.6667104
+                     },
+                     "travel_mode" : "DRIVING"
+                  }
+               ],
+               "traffic_speed_entry" : [],
+               "via_waypoint" : []
+            }
+         ],
+         "overview_polyline" : {
+            "points" : "qjx`Ako`jSjD`FnBrCfBnCn@x@|BcCzA_Bv@q@cB{Bl@e@`CmB~A}@vAq@dAm@~@g@bB{@"
+         },
+         "summary" : "Tô Hi?n Thành và Sý V?n H?nh",
+         "warnings" : [],
+         "waypoint_order" : []
+      }
+   ],
+   "status" : "OK"
+}
